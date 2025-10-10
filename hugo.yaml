@@ -1,5 +1,5 @@
 # Hugo configuration file
-title: My Site
+title: Blog - phplemos
 
 # import hextra as module
 module:
@@ -18,37 +18,45 @@ markup:
 
 menu:
   main:
-    - name: Docs
-      pageRef: /docs
-      weight: 1
-    - name: About
-      pageRef: /about
+    - name: Sobre
+      pageRef: /sobre
       weight: 2
-    - name: Contact ↗
-      url: "https://github.com/imfing"
+    - name: Contato ↗
+      url: "https://linkedin.com/in/phplemos"
       weight: 3
-    - name: Search
+    - name: Pesquisa
       weight: 4
       params:
         type: search
     - name: GitHub
       weight: 5
-      url: "https://github.com/imfing/hextra-starter-template"
+      url: "https://github.com/phplemos"
       params:
         icon: github
-    - name: Twitter
-      weight: 6
-      url: "https://twitter.com/"
-      params:
-        icon: x-twitter
-
 params:
   navbar:
     displayTitle: true
     displayLogo: false
 
+  comments:
+    enable: false
+    type: giscus
+    giscus:
+      repo: "phplemos/blog"
+      repoId: "R_kgDOP_6nBw"
+      category: "Announcements"
+      categoryId: "DIC_kwDOP_6nB84CweUL"
+      mapping: "title"
+      strict: 0
+      reactionsEnabled: 1
+      emitMetadata: 0
+      inputPosition: "bottom"
+      theme: "catppuccin_macchiato"
+      lang: "pt"
+      crossorigin: "anonymous"
+
   footer:
-    displayCopyright: false
+    displayCopyright: true
     displayPoweredBy: true
 
   editURL:
