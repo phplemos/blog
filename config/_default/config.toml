@@ -17,13 +17,13 @@ noClasses = false
 unsafe = true
 
 [params]
-author = "Pedro Lemos"
-description = "Pedro Lemos's personal blog"
-keywords = "blog,developer,personal,fullstack,mobile"
-info = ["Full Stack Mobile Developer", "GNU/Linux Enthusiast"]
-avatarURL = "images/phplemos_ai.png"
+author = "Pedro Henrique Pinheiro Lemos"
+description = "A place to test my awareness about some areas of Computer Science and share my ideas."
+keywords = "blog,personal,technology,programming,software development,linux,open source"
+info = ["FullStack Mobile Developer", "I use arch btw :|", "One thing is one thing, another thing is another thing","Oxe, baiano can write in english?"]
+avatarURL = "images/phplemos.jpg"
 dateFormat = "January 2, 2006"
-since = 2023 # Assuming the blog started recently
+since = 2026 # Assuming the blog started recently
 colorScheme = "auto"
 hideColorSchemeToggle = false
 maxSeeAlsoItems = 5
