@@ -2,14 +2,16 @@
 title: "About Me"
 ---
 
-Hey! My name is Pedro, I currently work as a Fullstack Mobile Developer at CEPEDI and I have parallel projects. 🤘
+I'm Pedro,  currently work as internal on CEPEDI at Fullstack Mobile Developer position, sometimes we create personal projects. 🤘
 
-It's hard to say what I like because I like everything, but what I tinker with when I'm free is GNU/Linux, I love this OS and how it provides freedom over the use of my machine, not to mention how it changed the world of computing. 🤯
-Every day I get involved in a new problem and the process of finding a solution gets easier every day, not less complex, every problem is an opportunity to learn. So I have experience with projects in production with a wide range of technologies, including:
+It's hard to say what I like because I like everything, but what i do when i'm free is something about GNU/Linux or Personal Projects(Productive frameworks, softwares, ...). A disclaimer about how i love this OS and how it provides freedom over the use of my machine, without mentioning how they changed the world of computing.🤯 Every day i get involved in a new problem and the process of finding a solution gets easier every day, not less complex, every problem is an opportunity to learn.
 
--   **Back-end:** PHP and Laravel
--   **Front-end:** React and React-Native (with Expo)
--   **DevOps and Infrastructure:** Docker and Linux
+## Stacks
+
+-   **Backend:** PHP/Laravel, NodeJS derived frameworks.
+-   **Frontend:** React.JS with inertia, TailwindCSS
+-   **Mobile** ReactNative (with expo), Java/Kotlin AndroidSDK
+-   **DevOps:** Linux(i use arch btw :Z), Docker, ShellScript, Python 
 -   **Databases:** PostgreSQL, MySQL, and MongoDB
 
-This blog is a space for me to share my knowledge, studies and the discoveries I make throughout my journey as a developer.
+This blog is a space for me to share my knowledge, studies, discoveries and excercise learn and pratice english, Then if you see something wrong with what i write in english, just ignore its part of the process of learning hehehe. Tnks for read this far. Enjoy!
