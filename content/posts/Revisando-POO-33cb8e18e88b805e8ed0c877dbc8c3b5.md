@@ -1,7 +1,7 @@
 ---
 title: "Revisando POO"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-09T00:04:00.000Z"
+lastmod: "2026-04-09T17:59:00.000Z"
 draft: true
 series: []
 authors:
@@ -13,7 +13,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-09T00:04:00.000Z"
+  last_edited_time: "2026-04-09T17:59:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -68,7 +68,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-09T00:04:00.000Z"
+      last_edited_time: "2026-04-09T17:59:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -150,4 +150,67 @@ Essa classe tem como propriedades a cor, capacidade em mililitros e nível e tem
 
 
 ## Estado e comportamento
+
+
+Estado é basicamente as propriedades de um objeto ou seja, imaginando no copo, o estado seria os valores definidos ao instanciar essa classe. Ja o comportamento é quando você tem métodos internos da própria classe que alterem algum estado, por exemplo o método encher, ele incrementa a variável nível, isso significa que essa função tem o comportamento que altera a propriedade nível, ou seja, altera o estado do objeto.
+
+
+## Herança
+
+
+Herança a gente entra num conceito bem legal, da para a gente fazer uma analogia bem fácil de entender. O conceito de herança surge quando uma classe herda atributos ou métodos de outra, vamos fazer uma analogia com animais, Animal é uma classe pai, como sabemos existem diversos tipos de animais podendo ser herbívoros, carnívoros, formas de andar podendo ser bípede, quadrupede, mas todos no final são animais e tem as mesmas propriedades base. Com isso em mente, podemos criar uma classe Cachorro que herda as propriedades de Animal. Assim ao criar a classe Cachorro ele vai ter os mesmos atributos e métodos que a classe pai e seus atributos e métodos únicos. Para facilitar o entendimento vamos utilizar como classificação de animais o conteúdo publicado no seguinte site .
+
+
+Vamos tentar ver isso no código:
+
+
+```typescript
+// Classe Pai
+class Animal {
+	// Propriedades que todo animal tem
+	public classe: string;
+	public ordem: string;
+	public família: string;
+	
+	// Comportamentos que toda animal faz
+	public alimentar(){}
+}
+
+// Classe filho que herda propriedades e metodos da classe pai
+class Cachorro extends Animal {
+	// Propriedades da classe pai
+	public nome: string;
+	public idade: string;
+	// Necessário chamar o metodo super() para poder trazer as propriedades da classe pai
+	constructor(){
+		super();
+	}
+	
+	// Método único da classe filho
+	public latir(){
+		return "auau"
+	}
+}
+```
+
+
+Agora vamos entender melhor, nós criamos uma classe pai chamada animal, essa classe pai tem propriedades e métodos que definem um animal. Todo animal tem uma classe, por exemplo os cachorros são animais da classe dos mamíferos, nós seres humanos também, sendo assim podemos criar novas classes que herdam essas propriedades, como no exemplo a classe Cachorro que herda ou estende de Animal. Essa classe Cachorro herda todas as propriedades e cria suas próprias, como a propriedade nome e o método latir. De forma resumida isso seria o conceito de herança. Mais pra frente vamos discutir mais sobre herança.
+
+
+## Abstração
+
+
+Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender a real necessidade. Esse conceito está em volta do que chamamos de “Classe Abstrata”, oque é uma classe abstrata? é uma classe que você não é obrigado a implementar o comportamento,não pode ser instanciada, ela é uma classe que apenas estende, ou seja, apenas a classe que herda essa classe pode instanciar.
+
+
+## Polimorfismo
+
+
+## Encapsulamento
+
+
+# Interface x Implementação
+
+
+# Herança x Composição
 
