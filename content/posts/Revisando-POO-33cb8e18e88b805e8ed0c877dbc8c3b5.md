@@ -1,7 +1,7 @@
 ---
 title: "Revisando POO"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-10T23:23:00.000Z"
+lastmod: "2026-04-14T12:31:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -15,7 +15,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-10T23:23:00.000Z"
+  last_edited_time: "2026-04-14T12:31:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -23,7 +23,9 @@ NOTION_METADATA:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
   cover: null
-  icon: null
+  icon:
+    type: "emoji"
+    emoji: "🥛"
   parent:
     type: "data_source_id"
     data_source_id: "1e6b8e18-e88b-8311-a61f-0775b643d0d5"
@@ -76,7 +78,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-10T23:23:00.000Z"
+      last_edited_time: "2026-04-14T12:31:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -281,10 +283,4 @@ Polimorfismo a gente entra um pouco no comportamento de uma classe, onde ao exte
 
 
 Encapsulamento a gente ja trata de como quem pode ver as propriedades de uma classe, existem 3 tipos de encapsulamento, public, private and protected;
-
-
-# Interface x Implementação
-
-
-# Herança x Composição
 

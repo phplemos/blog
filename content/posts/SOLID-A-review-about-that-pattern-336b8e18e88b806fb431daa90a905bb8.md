@@ -1,7 +1,7 @@
 ---
 title: "SOLID - A review about that pattern"
 date: "2026-04-02T14:37:00.000Z"
-lastmod: "2026-04-02T16:15:00.000Z"
+lastmod: "2026-04-14T12:31:00.000Z"
 draft: true
 series: []
 authors:
@@ -17,7 +17,7 @@ NOTION_METADATA:
   object: "page"
   id: "336b8e18-e88b-806f-b431-daa90a905bb8"
   created_time: "2026-04-02T14:37:00.000Z"
-  last_edited_time: "2026-04-02T16:15:00.000Z"
+  last_edited_time: "2026-04-14T12:31:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -25,7 +25,9 @@ NOTION_METADATA:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
   cover: null
-  icon: null
+  icon:
+    type: "emoji"
+    emoji: "🪨"
   parent:
     type: "data_source_id"
     data_source_id: "1e6b8e18-e88b-8311-a61f-0775b643d0d5"
@@ -78,7 +80,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-02T16:15:00.000Z"
+      last_edited_time: "2026-04-14T12:31:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -169,4 +171,13 @@ To understand that principle we need understand what they want tell with “resp
 
 
 ## **DIP:** Dependency Inversion Principle
+
+
+## References:
+
+
+[https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design](https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+
+
+[https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/](https://www.freecodecamp.org/news/solid-principles-explained-in-plain-english/)
 
