@@ -1,7 +1,7 @@
 ---
 title: "Revisando POO"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-14T12:31:00.000Z"
+lastmod: "2026-04-15T14:54:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -15,7 +15,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-14T12:31:00.000Z"
+  last_edited_time: "2026-04-15T14:54:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -78,7 +78,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-14T12:31:00.000Z"
+      last_edited_time: "2026-04-15T14:54:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -234,7 +234,7 @@ Agora vamos entender melhor, nós criamos uma classe pai chamada animal, essa cl
 ## Abstração
 
 
-Após entender sobre classe e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender a real necessidade. Esse conceito está em volta do que chamamos de “Classe Abstrata”, oque é uma classe abstrata? Basicamente é uma classe que você não é obrigado a implementar o comportamento e essa classe não pode ser instanciada, ela é uma classe que apenas pode ser herdada ou estendida ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos metodos dessa classe. Vamos ver um exemplo abaixo:
+Após entender sobre classe e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender a real necessidade. Esse conceito está em volta do que chamamos de “Classe Abstrata”, oque é uma classe abstrata? Basicamente é uma classe que você não é obrigado a implementar o comportamento e essa classe não pode ser instanciada, ela é uma classe que apenas pode ser herdada ou estendida ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
 
 
 ```typescript
