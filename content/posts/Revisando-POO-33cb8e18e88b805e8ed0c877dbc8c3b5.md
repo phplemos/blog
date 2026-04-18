@@ -1,7 +1,7 @@
 ---
 title: "Revisando POO"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-15T14:54:00.000Z"
+lastmod: "2026-04-17T18:41:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -15,7 +15,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-15T14:54:00.000Z"
+  last_edited_time: "2026-04-17T18:41:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -78,7 +78,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-15T14:54:00.000Z"
+      last_edited_time: "2026-04-17T18:41:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -111,39 +111,71 @@ MANAGED_BY_NOTION_HUGO: true
 > Esse post tem por objetivo consolidar meu conhecimento sobre orientação à objetos.
 
 
+Sugestão de musica para ouvir baixinho enquando lê:
+
+
+/
+
+
 # Contexto
 
 
-Orientação à objetos é um tipo de paradigma de programação que traz conceitos do mundo real para o mundo digital. Esse paradigma surgiu na Noruega nos anos 60, desde então a orientação à objetos vem sendo melhorada até os dias de hoje. Hoje em dia diversas linguagens de programação implementam POO, podendo ser de de forma parcial ou total. Uma das linguagens mais conhecidas por implementar totalmente POO é o JAVA, no java tudo é um objeto exceto os tipos primitivos. Tá, mas e ai, o que isso quer dizer? oque torna uma linguagem de programação ser orientada a objetos? Antes de respondermos essas perguntas vamos entender os principais conceitos e princípios envolta desse paradigma. 
+Orientação à objetos é um tipo de paradigma de programação que traz conceitos do mundo real para o mundo digital. Esse paradigma surgiu na Noruega nos anos 60, desde então a orientação à objetos vem sendo melhorada até os dias de hoje. Hoje em dia diversas linguagens de programação implementam POO, podendo ser de de forma parcial ou total. Uma das linguagens mais conhecidas por implementar totalmente POO é o JAVA, no java tudo é um objeto exceto os tipos primitivos. 
+
+
+> _Tá, mas e ai, o que isso quer dizer? oque torna uma linguagem de programação ser orientada a objetos? _
+
+
+Devagar vejo a importância de entender mais a fundo conceitos antes de partirmos pra implementação ou mão na massa, para responder essas perguntas precisamos entender os principais conceitos envolta desse paradigma. 
 
 
 # Base da Orientação à Objetos
 
 
-Como dito anteriormente, a orientação a objetos surge com o intuito de trazer os objetos do mundo real para o mundo digital. No mundo real se nós observamos, temos objetos em tudo ao nosso redor, cadeira, relógio, copo e etc, agora te trago um questionamento, o que é um objeto? o que define que um copo ou relógio ser um objeto? 
+Vimos que a orientação a objetos um dos intuitos é trazer os objetos do mundo real para o mundo digital. No mundo real, quando nós observamos não nosso redor temos objetos pra todo lado, cadeira, relógio, copo e etc.
 
 
-Na disciplina de L.P. II, meu professor  trouxe essa reflexão para entender melhor POO. Nesse processo podemos pensar um objeto como algo que tem características, propriedades e funcionalidades, por exemplo, um copo é um objeto pois ele tem características como formato, matéria prima (plástico, porcelana), cor, capacidade de líquidos, tem funções como reter algum liquido para ser bebido, capturando essas características e funções conseguimos representar o copo do mundo real no mundo digital.
+> _Legal, entendi que a ideia é representar objeto do mundo real no digital, mas ainda não entendi a ideia, o que é um objeto? o que define que um copo ou relógio ser um objeto?_ 
+
+
+Na disciplina de L.P. II, meu professor  trouxe essa reflexão para entender melhor sobre POO. Justamente o que você questionou “Oque é um objeto?”, “Oque define que um copo ou relógio são objetos?”. A partir desse questionamento. surgiram diversas definições que devagar foram todas chegando ao mesmo ponto. Esse de tentar definir o que seria um objeto foi interessante pois geralmente não se questionamos sobre coisas que já são consideradas “óbvias”, ao tentar definir podemos pensar um objeto como algo que tem características através de propriedades e funcionalidades, por exemplo, uma caneca é um objeto pois ele tem características como formato, matéria prima (plástico, porcelana), cor, capacidade de líquidos, tem funcionalidades como reter algum liquido para ser bebido, capturando essas características e funções conseguimos representar o copo do mundo real no mundo digital.
 
 
 ## Classe
 
 
-> Ta, entendi que um objeto tem características e funções, mas até agora não entendi como diabos eu vou conseguir criar um objeto dentro do digital? Calma bonitão, é ai que entra o principal conceito da orientação à objetos, agora vamos falar sobre **Classe**.
+> _Ta, entendi que um objeto tem características e funcionalidades, mas até agora não entendi como diabos eu vou conseguir criar um objeto dentro do digital? _
 
 
-Uma classe é como se fosse uma forma de bolo ou um molde de alguma peça, onde você define as propriedades e funções, onde toda vez que o computador precisar de um objeto com características do qual você definiu, ele utiliza essa classe para criar um objeto, esse processo de criar um objeto a partir de uma classe se chama **instanciar **uma classe, nas linguagens de programação esse processo ocorre através do operador `**new**`**.** Lembra quando você ver uma linha de código que está mais ou menos assim:
+_Calma bonitão, ai que entra o principal conceito da orientação à objetos, agora vamos falar sobre __**Classe**__ ou __`**class**`__._
 
 
-```typescript
-// No exemplo estou usando typescript
-const copo = new Copo();
-// Estou criando uma variável chamada copo e com o operador de atribuição 
-// Passando um novo objeto da classe Copo, criado através do operador new
-```
+Vamos fazer um exercício mental, pegue um objeto ao seu redor, no meu caso tem uma caneca de café aqui, olhe pra um seu objeto agora, tenta me dizer algumas coisas sobre ele, imagina que eu não sei o que é seu objeto e você vai ter que me descrever por escrito, se você fosse definir por escrito uma caneca de café como a minha agora, você escreveria coisas como:
 
 
-Pois é sua linguagem criando um objeto a partir de uma classe. Sua linguagem vai criar um objeto a partir da classe após o operador new. Agora vamos ver como seria esse “molde”, abaixo segue o exemplo de uma classe de copo.
+> ☕ 1. É um cilindro  
+>   
+> 1. Tem alça  
+>   
+> 1. Capacidade de armazenamento de liquido  
+>   
+> 1. Tem cor  
+>   
+> 1. Material pode ser de porcelana, plástico  
+>   
+> 1. Pode usar para servir chá ou café
+
+
+Para definirmos essa caneca no mundo digital, nós temos que a partir dessa lista de características definidas a partir da observação, transformar em propriedades e funções desse objeto, assim surge a ideia de **classe.**
+
+
+Uma classe é como se fosse uma forma de bolo ou um molde de alguma peça, onde você define as propriedades e métodos(Funcionalidades), onde toda vez que o computador precisar de um objeto com características do qual você definiu, ele utiliza a classe criada para criar um objeto, esse processo de criar um objeto a partir de uma classe se chama **instanciar **uma classe, nas linguagens de programação esse processo ocorre através do operador `**new**`**. ** 
+
+
+> _Sim parceiro, beleza isso ai deu pra entender, mas como que é o diacho da classe no código?_
+
+
+Paciência jovem, agora que você pegou a ideia por trás de Classe e objeto faz sentido trazer exemplos. Vamos ver o exemplo de uma classe no java usando nosso exemplo da caneca.
 
 
 ```typescript
@@ -234,7 +266,20 @@ Agora vamos entender melhor, nós criamos uma classe pai chamada animal, essa cl
 ## Abstração
 
 
-Após entender sobre classe e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender a real necessidade. Esse conceito está em volta do que chamamos de “Classe Abstrata”, oque é uma classe abstrata? Basicamente é uma classe que você não é obrigado a implementar o comportamento e essa classe não pode ser instanciada, ela é uma classe que apenas pode ser herdada ou estendida ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
+Após entender sobre classes e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender melhor. Esse conceito está em volta do que chamamos de “Classe Abstrata” ou  `abstract class`. 
+
+
+Beleza entendi, mas me diga oque é uma classe abstrata? Olha segundo meu brother Gegê(Gemini pros não tão íntimos), ele trouxe esta definição:
+
+
+> In object-oriented programming (OOP), an **abstract class** is a restricted class that cannot be used to create objects (you cannot instantiate it directly). To access it, it must be inherited by another class.
+
+
+> It serves as a **blueprint** or a formal contract for other classes. It allows you to define a common interface and shared behavior for a group of related subclasses while forcing those subclasses to implement specific details.
+
+
+
+  aque você não é obrigado a implementar o comportamento e essa classe não pode ser instanciada, ela é uma classe que apenas pode ser herdada ou estendida ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
 
 
 ```typescript
