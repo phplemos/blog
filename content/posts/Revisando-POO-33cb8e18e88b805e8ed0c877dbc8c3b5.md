@@ -1,8 +1,8 @@
 ---
 title: "Revisando POO"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-17T18:41:00.000Z"
-draft: true
+lastmod: "2026-04-22T14:01:00.000Z"
+draft: false
 series:
   - "Roadmap CEPEDI"
 authors:
@@ -15,7 +15,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-17T18:41:00.000Z"
+  last_edited_time: "2026-04-22T14:01:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -44,7 +44,7 @@ NOTION_METADATA:
     draft:
       id: "JiWU"
       type: "checkbox"
-      checkbox: true
+      checkbox: false
     authors:
       id: "bK%3B%5B"
       type: "people"
@@ -78,7 +78,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-17T18:41:00.000Z"
+      last_edited_time: "2026-04-22T14:01:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -109,12 +109,6 @@ MANAGED_BY_NOTION_HUGO: true
 
 
 > Esse post tem por objetivo consolidar meu conhecimento sobre orientação à objetos.
-
-
-Sugestão de musica para ouvir baixinho enquando lê:
-
-
-/
 
 
 # Contexto
@@ -269,17 +263,11 @@ Agora vamos entender melhor, nós criamos uma classe pai chamada animal, essa cl
 Após entender sobre classes e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender melhor. Esse conceito está em volta do que chamamos de “Classe Abstrata” ou  `abstract class`. 
 
 
-Beleza entendi, mas me diga oque é uma classe abstrata? Olha segundo meu brother Gegê(Gemini pros não tão íntimos), ele trouxe esta definição:
+> Beleza entendi, mas me diga oque é uma classe abstrata?  
 
 
-> In object-oriented programming (OOP), an **abstract class** is a restricted class that cannot be used to create objects (you cannot instantiate it directly). To access it, it must be inherited by another class.
-
-
-> It serves as a **blueprint** or a formal contract for other classes. It allows you to define a common interface and shared behavior for a group of related subclasses while forcing those subclasses to implement specific details.
-
-
-
-  aque você não é obrigado a implementar o comportamento e essa classe não pode ser instanciada, ela é uma classe que apenas pode ser herdada ou estendida ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
+Em uma busca simples no google ele me trouxe que: “In object-oriented programming (OOP), an **abstract class** is a restricted class that cannot be used to create objects (you cannot instantiate it directly). To access it, it must be inherited by another class.”
+Ou seja, uma classe abstrata você não pode usar ela pra criar objetos mas sim pra definir o “contrato” que uma classe vai herda, você não é obrigado a implementar o comportamento, ela é uma classe que apenas pode ser herdada ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
 
 
 ```typescript
@@ -306,7 +294,6 @@ class Employee extends Person {
     }
 
     find(name:string): Person { 
-        // execute AJAX request to find an employee from a db
         return new Employee(name, 1);
     }
 }
@@ -324,8 +311,14 @@ let emp2: Person = emp.find('Steve');
 Polimorfismo a gente entra um pouco no comportamento de uma classe, onde ao extender uma classe cada uma pode se comportar de muitas formas, daí o nome polimorfismo. Para entender melhor vamos utilizar o mesmo conceito de animais
 
 
+> Breve mais detalhes
+
+
 ## Encapsulamento
 
 
-Encapsulamento a gente ja trata de como quem pode ver as propriedades de uma classe, existem 3 tipos de encapsulamento, public, private and protected;
+Encapsulamento a gente já trata de como quem pode ver as propriedades de uma classe, existem 3 tipos de encapsulamento, public, private and protected;
+
+
+> Breve mais detalhes
 

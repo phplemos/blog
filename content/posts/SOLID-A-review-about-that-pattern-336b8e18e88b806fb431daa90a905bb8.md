@@ -1,7 +1,7 @@
 ---
 title: "SOLID - A review about that pattern"
 date: "2026-04-02T14:37:00.000Z"
-lastmod: "2026-04-15T14:55:00.000Z"
+lastmod: "2026-04-22T14:10:00.000Z"
 draft: true
 series: []
 authors:
@@ -17,7 +17,7 @@ NOTION_METADATA:
   object: "page"
   id: "336b8e18-e88b-806f-b431-daa90a905bb8"
   created_time: "2026-04-02T14:37:00.000Z"
-  last_edited_time: "2026-04-15T14:55:00.000Z"
+  last_edited_time: "2026-04-22T14:10:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -80,7 +80,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-15T14:55:00.000Z"
+      last_edited_time: "2026-04-22T14:10:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -126,13 +126,13 @@ MANAGED_BY_NOTION_HUGO: true
 ---
 
 
-> 
+> This post is a way to practice my english and fix it 
 
 
 # Principles
 
 
-The name SOLID is an acronym of the five principles of OOP where Unclebob on research identify that patterns and unified on this five principles. Unclebob don’t create but they identify the most important principles used on OOP and unified.
+The name SOLID is an acronym of the five principles of OOP where Unclebob on research identify that patterns and unified on this five principles. Uncle bob don’t create but they identify the most important principles used on OOP and unified.
 
 
 When you use that Five principles on daily code they will be increase with that benefits:
