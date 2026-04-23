@@ -1,9 +1,10 @@
 ---
 title: "SOLID - A review about that pattern"
 date: "2026-04-02T14:37:00.000Z"
-lastmod: "2026-04-22T14:10:00.000Z"
+lastmod: "2026-04-22T20:52:00.000Z"
 draft: true
-series: []
+series:
+  - "Roadmap CEPEDI"
 authors:
   - "Pedro Henrique Pinheiro Lemos"
 tags:
@@ -17,7 +18,7 @@ NOTION_METADATA:
   object: "page"
   id: "336b8e18-e88b-806f-b431-daa90a905bb8"
   created_time: "2026-04-02T14:37:00.000Z"
-  last_edited_time: "2026-04-22T14:10:00.000Z"
+  last_edited_time: "2026-04-22T20:52:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -39,7 +40,10 @@ NOTION_METADATA:
     series:
       id: "B%3C%3FS"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "02a4eb89-2f55-40be-ab7e-4489df020e63"
+          name: "Roadmap CEPEDI"
+          color: "orange"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -80,7 +84,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-22T14:10:00.000Z"
+      last_edited_time: "2026-04-22T20:52:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -126,38 +130,40 @@ MANAGED_BY_NOTION_HUGO: true
 ---
 
 
-> This post is a way to practice my english and fix it 
+## Referencias:
 
 
-# Principles
+# Contexto
 
 
-The name SOLID is an acronym of the five principles of OOP where Unclebob on research identify that patterns and unified on this five principles. Uncle bob don’t create but they identify the most important principles used on OOP and unified.
+Antes de iniciar acho interessante eu dar um contexto, esse assunto é continuidade de uma serie de conteúdos elaborados como parte do processo de aprendizado do meu estágio como Desenvolvedor Fullstack Mobile. Para por em prática um novo hábito que tenho vontade a muito tempo, assim invés de apenas assistir o conteúdo, decidi fazer diferente utilizando esses conteúdos como guia programático para tirar meu blog do zero. Ou seja, estou descobrindo como vai ser o desenvolver da escrita e melhorando devagar. A medida que formos continuando na serie vou identificando melhor minha forma de comunicar e compilar meu conhecimento adquirido nesse processo. Vamos lá, Esse post é sobre o SOLID e para entendermos o SOLID é importante compreender muito bem POO, caso ainda haja alguma duvida vai no post anterior que ta bem detalhadinho.
 
 
-When you use that Five principles on daily code they will be increase with that benefits:
-
-- More easy to maintain and adapt to scope changes.
-- Testable and easy to understand.
-- Extensible for change with less effort.
-- Provide maximum reuse.
-- Remain in use for as long as possible.
-
-And when you use solid you can avoid some common problems like:
-
-- Difficult to testing and create unit tests
-- Code without structure and patterns
-- Difficult to isolate functions
-- Code duplicated
-- Fragile, you code don’t broke with some change
-
-Understanding that benefits, lets deep understand what each principle of SOLID can talk to us.
+Decidi fazer diferente,  as referencias no inicio, a final eu não to tirando tudo isso do nada, to tomando como base artigos e cursos sobre esse conteúdo
 
 
-## **SRP:** Single Responsibility Principle
+## SOLID
 
 
-> “A class should have one, and only one, reason to change”
+Na programação ja se tinha alguns princípios que se entendiam como corretos ao se utilizar o paradigma orientado a objetos, mas Robert C. Martin decidiu capturar todos os princípios que faziam sentido para fazer um projeto com POO ser coeso e solido e elencou os 5 principais, a partir daí surgiu o acrônimo SOLID, breve falaremos mais sobre cada letra do acrônimo.
+
+
+> Ta, mas me diz, oque isso vai mudar no meu dia a dia como programador?
+
+
+Olha, é a aplicação do SOLID ao meu ver é um pouco de entender a filosofia por manter o ambiente arrumado, se você chega numa casa arrumada e tira algo do lugar fica bem escancarado que ta fora do lugar, seguindo essa analogia, utilizar os princípios do SOLID no seu dia a dia como programador, é igual a manter uma casa arrumada, como a casa ta arrumada seguindo os princípios pre estabelecidos(SOLID) como por exemplo, roupas dentro do armário e não em cima da cama, mesa apenas com computador sem trambolho em cima, no código é você preservar o padrão seguindo os princípios(SOLID) ao implementar novas linhas de código. Assim cada coisa permanece organizado e fácil de localizar e visualizar. Acho que de ideia segue mais ou menos isso, mas agora trazendo alguns pontos claro de benefícios ao usar o SOLID.
+
+
+> 📈 ### Benefícios
+
+> 🤩 ### Evita problemas
+
+
+## Principio da Responsabilidade Única 
+
+- **SRP - Single Responsibility Principle**
+
+Esse principio ele começa com a ideia de que uma classe so deve ser modificada se o motivo da modificação tiver a ver com sua responsabilidade. Ou seja, se eu to com uma classe que vai processar o pagamento, ela tem que fazer coisas referente ao processo de pagamento e não ao envio de notificações por email, ou seja, a responsabilidade da classe é processar o pagamento, o envio de notificação é uma outra responsabilidade que não compete a classe de processar pagamento, ou seja, essa situação há uma violação nesse principio.
 
 
 To understand that principle we need understand what they want tell with “responsibility”. Responsibility is about what does this class have to do, if that class need to do more one thing, that principle crash. Example if you have a class to send emails, that class should not format the email because this is another responsibility and don’t have to do for them. This principle isn’t only about class but you can apply for layers too, example if you have a business layer that layer cant to do something about infra layers or repository layers.
@@ -165,7 +171,9 @@ To understand that principle we need understand what they want tell with “resp
 
 ## **OCP:** Open/Closed Principle
 
-- This principle is about how the changes will be make  at this class, that class need be open to extensions and closed to
+
+This principle is about how the changes will be make at class, that class need be open to extensions and closed for modifications.
+
 
 ## **LSP: **Liskov Substitution Principle
 
