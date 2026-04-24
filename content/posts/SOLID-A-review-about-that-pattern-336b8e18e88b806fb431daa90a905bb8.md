@@ -1,7 +1,7 @@
 ---
 title: "SOLID - A review about that pattern"
 date: "2026-04-02T14:37:00.000Z"
-lastmod: "2026-04-22T20:52:00.000Z"
+lastmod: "2026-04-23T19:44:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -18,7 +18,7 @@ NOTION_METADATA:
   object: "page"
   id: "336b8e18-e88b-806f-b431-daa90a905bb8"
   created_time: "2026-04-02T14:37:00.000Z"
-  last_edited_time: "2026-04-22T20:52:00.000Z"
+  last_edited_time: "2026-04-23T19:44:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -84,7 +84,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-22T20:52:00.000Z"
+      last_edited_time: "2026-04-23T19:44:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -166,22 +166,43 @@ Olha, é a aplicação do SOLID ao meu ver é um pouco de entender a filosofia p
 Esse principio ele começa com a ideia de que uma classe so deve ser modificada se o motivo da modificação tiver a ver com sua responsabilidade. Ou seja, se eu to com uma classe que vai processar o pagamento, ela tem que fazer coisas referente ao processo de pagamento e não ao envio de notificações por email, ou seja, a responsabilidade da classe é processar o pagamento, o envio de notificação é uma outra responsabilidade que não compete a classe de processar pagamento, ou seja, essa situação há uma violação nesse principio.
 
 
-To understand that principle we need understand what they want tell with “responsibility”. Responsibility is about what does this class have to do, if that class need to do more one thing, that principle crash. Example if you have a class to send emails, that class should not format the email because this is another responsibility and don’t have to do for them. This principle isn’t only about class but you can apply for layers too, example if you have a business layer that layer cant to do something about infra layers or repository layers.
-
-
 ## **OCP:** Open/Closed Principle
 
 
-This principle is about how the changes will be make at class, that class need be open to extensions and closed for modifications.
+Esse principio é de boa de entender também, no caso ele quer dizer que uma classe deve ta aberta para extensão e fechada para modificação.
+
+
+> Falo Mandarim, tendi foi nada kkkk como assim fechada para modificação?
+
+
+No primeiro momento que li sobre pensei tipo, “Oxe?!?! então quer dizer q terminei de fazer a classe não posso modificar mais ela?”, mas depois estudando mais e vendo sobre implementação eu compreendi que é sobre o domínio do que a classe faz, ou seja, se a modificação for feita no que tange o domínio da classe, por exemplo, a classe processar pagamentos, se a modificação foi em um comportamento ja existente e essa modificação não está fora do domínio, ou seja, processamento de pagamentos, você pode modificar, agora se você quer adicionar um novo comportamento à essa classe, pensamos ja na extensão dela para acrescentar esse novo comportamento. Meio confuso, mas com exemplos fica mais fácil de visualizar.
 
 
 ## **LSP: **Liskov Substitution Principle
 
 
+Esse principio me pegou, a definição é muito matemática, então precisei ler algumas vezes para entender. Depois de muito insistir em realmente entender esse principio eu cheguei a um raciocínio e vou te explicar como se fosse explicar pra mim mesmo, afinal isso aqui é eu expondo meu conhecimento para firmá-lo.  
+
+
+![](https://notion-hugo.pages.dev/api?block_id=34bb8e18-e88b-8020-b4b3-d107b9df1354)
+
+
+O curso que vi, trouxe esse slide onde trouxe a definição matemática e um exemplo do pato, esse pato me quebrou.
+
+
+`“Subclasses devem ser substituíveis por suas Superclasses.”` 
+
+
+> Ai te pergunto, oque quer dizer com Subclasse e Superclasse?
+
+
+ Vamos lá, Superclasse é qualquer classe que seja pai de outra, ou seja, se uma classe extende a outra ela é uma Subclasse
+
+
 ## **ISP:** Interface Segregation Principle
 
 
-## **DIP:** Dependency Inversion Principle
+## **DIP:** Dependency Inversion Principle2
 
 
 ## References:
