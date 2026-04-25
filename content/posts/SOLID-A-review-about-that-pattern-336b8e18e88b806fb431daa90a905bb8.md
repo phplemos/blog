@@ -1,7 +1,7 @@
 ---
 title: "SOLID - A review about that pattern"
 date: "2026-04-02T14:37:00.000Z"
-lastmod: "2026-04-23T19:44:00.000Z"
+lastmod: "2026-04-24T13:46:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -18,7 +18,7 @@ NOTION_METADATA:
   object: "page"
   id: "336b8e18-e88b-806f-b431-daa90a905bb8"
   created_time: "2026-04-02T14:37:00.000Z"
-  last_edited_time: "2026-04-23T19:44:00.000Z"
+  last_edited_time: "2026-04-24T13:46:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -84,7 +84,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-23T19:44:00.000Z"
+      last_edited_time: "2026-04-24T13:46:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -196,7 +196,7 @@ O curso que vi, trouxe esse slide onde trouxe a definição matemática e um exe
 > Ai te pergunto, oque quer dizer com Subclasse e Superclasse?
 
 
- Vamos lá, Superclasse é qualquer classe que seja pai de outra, ou seja, se uma classe extende a outra ela é uma Subclasse
+Superclasse é qualquer classe que seja pai de outra, ou seja, se uma classe estende outra ela é uma Subclasse. O que ele quer dizer com essa substituição de Liskov é que se você criou uma abstração onde uma subclasse não pode ser substituída pela classe pai, essa sua abstração esta errada. No caso imaginando q a classe pai é o Pato verdadeiro e a classe filha é o pato de plastico, se eu não tiver um pato de plastico em tese eu posso usar um pato de verdade, mas se ao usar o pato de verdade eu tiver que usar bateria, ou seja, se na substituição o objeto que for ser criado com a Classe substituida precisar de uma bateria, quer dizer que tem alguma coisa errada, porque se for para seguir a logica se ambos são patos logo não deveria necessitar de algo para fazer funcionar, nesse caso a bateria.
 
 
 ## **ISP:** Interface Segregation Principle
