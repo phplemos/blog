@@ -1,10 +1,11 @@
 ---
-title: "Revisando POO"
+title: "Programação Orientada à Objetos"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-22T14:01:00.000Z"
+lastmod: "2026-04-30T16:58:00.000Z"
 draft: false
 series:
   - "Roadmap CEPEDI"
+Status: "Need to be reviewed"
 authors:
   - "Pedro Henrique Pinheiro Lemos"
 tags:
@@ -15,7 +16,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-22T14:01:00.000Z"
+  last_edited_time: "2026-04-30T16:58:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -45,6 +46,13 @@ NOTION_METADATA:
       id: "JiWU"
       type: "checkbox"
       checkbox: false
+    Status:
+      id: "X%7B%7CN"
+      type: "status"
+      status:
+        id: "=nd{"
+        name: "Need to be reviewed"
+        color: "yellow"
     authors:
       id: "bK%3B%5B"
       type: "people"
@@ -78,7 +86,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-22T14:01:00.000Z"
+      last_edited_time: "2026-04-30T16:58:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -89,7 +97,7 @@ NOTION_METADATA:
       title:
         - type: "text"
           text:
-            content: "Revisando POO"
+            content: "Programação Orientada à Objetos"
             link: null
           annotations:
             bold: false
@@ -98,9 +106,10 @@ NOTION_METADATA:
             underline: false
             code: false
             color: "default"
-          plain_text: "Revisando POO"
+          plain_text: "Programação Orientada à Objetos"
           href: null
-  url: "https://www.notion.so/Revisando-POO-33cb8e18e88b805e8ed0c877dbc8c3b5"
+  url: "https://app.notion.com/p/Programa-o-Orientada-Objetos-33cb8e18e88b805e8ed\
+    0c877dbc8c3b5"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
