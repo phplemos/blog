@@ -1,8 +1,8 @@
 ---
 title: "Injeção de Dependência"
 date: "2026-04-28T16:06:00.000Z"
-lastmod: "2026-05-05T17:30:00.000Z"
-draft: true
+lastmod: "2026-05-06T20:04:00.000Z"
+draft: false
 series:
   - "Roadmap CEPEDI"
 Status: "In progress"
@@ -18,7 +18,7 @@ NOTION_METADATA:
   object: "page"
   id: "350b8e18-e88b-809a-9e6f-cc407a1569eb"
   created_time: "2026-04-28T16:06:00.000Z"
-  last_edited_time: "2026-05-05T17:30:00.000Z"
+  last_edited_time: "2026-05-06T20:04:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -47,7 +47,7 @@ NOTION_METADATA:
     draft:
       id: "JiWU"
       type: "checkbox"
-      checkbox: true
+      checkbox: false
     Status:
       id: "X%7B%7CN"
       type: "status"
@@ -94,7 +94,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-05T17:30:00.000Z"
+      last_edited_time: "2026-05-06T20:04:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -174,27 +174,45 @@ Quando me pergunto sobre o que é um ciclo de vida, penso em algo que siga o pad
 Pronto, entendemos o cenário agora vamos fazer um paralelo, um ciclo de vida de um objeto pode ser entendido como o tempo de duração de um objeto dentro da aplicação enquanto ela ta em execução, ou seja, enquanto a padaria ta aberta, faz-se bolo, pão, esses itens tem um ciclo de vida que pode ser visto da seguinte forma, produção(Inicio), exposição(Meio) e venda(Fim). Fazendo paralelo à uma aplicação, quando a gente injeta uma dependência em uma classe, nós temos como dizer para o nosso container qual é o ciclo de vida desse objeto, como ele vai se comportar no inicio, meio e fim. Para isso as linguagens de programação que implementam o POO as classes tem métodos responsáveis por definir esses comportamentos, métodos como construtor e destrutor lidam com o comportamento do objeto quando são criadas e encerradas.
 
 
-	> Porra, agora foi que deu o caraio mesmo, perai, beleza entendi que tem inicio meio e fim, mas o que isso tem a ver com containers e Injeção de Dependência?
+	> Porra, agora foi que deu o caraio mesmo, peraí, beleza entendi que tem inicio meio e fim, mas o que isso tem a ver com containers e Injeção de Dependência?
 
 
-É ai que entra o conceito de escopo meu parceiro, quando você sabe que existem ciclos de vidas diferentes para seu objeto dentro do container, você consegue definir quais dependências vão ser criadas e assim que a classe que usou a dependência terminar você pode excluir o objeto da memoria, ou casos que quando você injetar um objeto de dependência ele seja o mesmo para qualquer objeto que deseje utilizar aquela classe.
+É ai que entra o a ideia por traz dos tipos de ciclo de vida meu parceiro, quando você sabe que existem ciclos de vidas diferentes para seu objeto dentro do container, você consegue definir quais dependências vão ser criadas e assim que a classe que usou a dependência terminar você pode excluir o objeto da memoria, ou casos que quando você injetar um objeto de dependência ele seja o mesmo para qualquer objeto que deseje utilizar aquela classe.
 
 
-# Escopos
+> 💡 **Coisa que você provavelmente vai ignorar mas ajuda**
 
 
-O Curso que vi trouxe exemplos de escopo de objeto com base no .NET core usa principalmente 3 tipos de escopo:
+
+
+# Tipos de ciclo de vida no .NET
+
+
+Um dos conteúdos que vi, trouxe exemplos de tipos de ciclo de vida no .NET, o .NET usa por padrão esses 3 tipos.
 
 	- **Transient:**
-		- 
-	- **Singleton:**
-		- 
+		- Um serviço com um tempo de vida _transitório_ é criado sempre que é solicitado do contêiner de serviço.
 	- **Scoped:**
+		- Para aplicações web, um tempo de vida _com escopo_ indica que os serviços são criados uma vez por solicitação de cliente (conexão).
+	- **Singleton:**
+		- Cada requisição subsequente da implementação do serviço, a partir do contêiner de injeção de dependência, utiliza a mesma instância.
 
-# Resuminho
+Agora a hora boa, hora de fazer paralelo com nosso exemplo da padaria. Em uma padaria existem produtos e cada um com o seu ciclo de vida, por exemplo a produção de pão o tempo de vida dentro da padaria é curto, ou seja, produz, expõe e vende, já uma torta por exemplo é um outro tipo de ciclo de vida, eu sei que pode durar mais tempo, mas pra nossa analogia imagine que essa torta tem o prazo de validade de 24 horas após produzida, ela so existe enquanto a padaria estiver aberta(Aplicação rodando) todo dia dentro do intervalo do expediente, então quando o pessoal fecha a padaria, caso não tenha sido vendida é jogada fora. Nesse exemplo a torta é como um objeto/serviço singleton, e os demais podem variar entre transient e scoped.
+
+
+De inicio esse ciclo de vida scoped foi meio complexo de entender, pois antes eu entendi que escopo era o mesmo que os tipos de ciclo de vida, mas ao consultar a documentação da Microsoft li que o scoped é sobre o controle “escopando” o serviço/objeto para cada requisição(web) se eu usar o mesmo serviço/objeto em varias partes da minha rotina, enquanto estiver na requisição o objeto vai ser o mesmo, assim o escopo do objeto é a requisição, se houver 15 requisições simultâneas cada requisição recebe um objeto “escopado”, esse objeto so tem o contexto da própria request. 
+
+
+# Conclusão
+
+
+Tá, eu falei muito mas dando um resumo, tentei trazer pra você um paralelo com diversos com coisas concretas do nosso dia a dia, conteúdo teórico é ruim e chato quando você não observa ele no seu dia a dia, tenho gostado de escrever conteúdo teórico pois consigo enxergar melhor a necessidade de determinada parte do meu código, o processo de externalizar o que você entende auxilia muito no aprendizado, me falaram isso e to descobrindo que é verdade.
 
 
 # Referencias
+
+
+[https://learn.microsoft.com/pt-br/dotnet/core/extensions/dependency-injection/overview#scope-validation:~:text=Dica-,Na,Web,-%2E](https://learn.microsoft.com/pt-br/dotnet/core/extensions/dependency-injection/overview#scope-validation:~:text=Dica-,Na,Web,-%2E)
 
 
 [https://www.palmmedia.de/Blog/2011/8/30/ioc-container-benchmark-performance-comparison](https://www.palmmedia.de/Blog/2011/8/30/ioc-container-benchmark-performance-comparison)
