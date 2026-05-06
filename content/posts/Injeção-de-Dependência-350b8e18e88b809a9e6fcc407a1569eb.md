@@ -1,19 +1,24 @@
 ---
 title: "Injeção de Dependência"
 date: "2026-04-28T16:06:00.000Z"
-lastmod: "2026-04-30T20:29:00.000Z"
+lastmod: "2026-05-05T17:30:00.000Z"
 draft: true
-series: []
+series:
+  - "Roadmap CEPEDI"
 Status: "In progress"
 authors:
   - "Pedro Henrique Pinheiro Lemos"
-tags: []
-categories: []
+tags:
+  - "PATTERNS"
+  - "ARCHITECTURE"
+  - "SOLID"
+categories:
+  - "article"
 NOTION_METADATA:
   object: "page"
   id: "350b8e18-e88b-809a-9e6f-cc407a1569eb"
   created_time: "2026-04-28T16:06:00.000Z"
-  last_edited_time: "2026-04-30T20:29:00.000Z"
+  last_edited_time: "2026-05-05T17:30:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -35,7 +40,10 @@ NOTION_METADATA:
     series:
       id: "B%3C%3FS"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "02a4eb89-2f55-40be-ab7e-4489df020e63"
+          name: "Roadmap CEPEDI"
+          color: "orange"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -66,15 +74,27 @@ NOTION_METADATA:
     tags:
       id: "jw%7CC"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "fc85eb6c-ed72-45c3-8b75-82f1acc267a1"
+          name: "PATTERNS"
+          color: "red"
+        - id: "af68a10b-3d47-416a-a0bf-448e79f7de59"
+          name: "ARCHITECTURE"
+          color: "purple"
+        - id: "21ccd45e-1b48-4d24-923c-32e644c2f5c1"
+          name: "SOLID"
+          color: "default"
     categories:
       id: "nbY%3F"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "a68c3a8e-8faf-4d33-bded-7afde47e7676"
+          name: "article"
+          color: "blue"
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-30T20:29:00.000Z"
+      last_edited_time: "2026-05-05T17:30:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -96,8 +116,8 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Injeção de Dependência"
           href: null
-  url: "https://app.notion.com/p/Inje-o-de-Depend-ncia-350b8e18e88b809a9e6fcc407a\
-    1569eb"
+  url: "https://www.notion.so/Inje-o-de-Depend-ncia-350b8e18e88b809a9e6fcc407a156\
+    9eb"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
@@ -117,32 +137,61 @@ Vamos lá, esse post é sobre Injeção de dependência esse conteúdo vai ser m
 # Dependência
 
 
-Olha, a partir de agora vo pressupor que você já ta conseguindo visualizar a melhor o que é classe, abstração, objeto, contrato pra garantir e ficar até fresco e entender o que vou passar daqui em diante, entendemos classe como um molde de um objeto, abstração a gente cria classes com contratos pre definidos que não precisam ser implementados apenas os seus filhos, objeto é uma instancia de uma classe, ou seja, o bolo da forma, o objeto é o resultado de se criar algo usando uma determinada classe e esse processo se chama instanciar, contrato é interface que disponibiliza alguns recursos desde que se cumpra as regras preestabelecidas. Ufa, foi difícil tentar resumir mas foi, então lembra do conceito da inversão de dependência do qual a gente desacopla nossa classe dependendo de um contrato e não de uma classe concreta. Como resultado da aplicação do SOLID, a injeção de dependência é um processo que se torna necessário. 
+Olha, a partir de agora vou pressupor que você já ta conseguindo visualizar a melhor o que é classe, abstração, objeto, contrato pra garantir e ficar até fresco e entender o que vou passar daqui em diante, entendemos classe como um molde de um objeto, abstração a gente cria classes com contratos pre definidos que não são obrigados a ser implementados, apenas os seus filhos tem a obrigação, objeto é uma instancia de uma classe, ou seja, o bolo da forma, o objeto é o resultado de se criar algo usando uma determinada classe e esse processo se chama instanciar, contrato é interface que disponibiliza alguns recursos desde que se cumpra as regras preestabelecidas. Ufa, foi difícil tentar resumir mas foi, então lembra do conceito da inversão de dependência do qual a gente desacopla nossa classe dependendo de um contrato e não de uma classe concreta. Como resultado da aplicação do SOLID, a injeção de dependência é um processo que se torna necessário. 
 
 
 	> Meu parceiro até entendi a questão de dependência e tal, mas me da um exemplo rápido ai ta abstrato demais.
 
 
-Calma filhão, antes de entrarmos na implementação precisamos entender algumas coisas antes. A escrita deste artigo é no decorrer do meu processo de estudo e durante algumas a
+Calma filhão, antes de entrarmos na implementação precisamos entender algumas coisas antes. A escrita deste artigo é no decorrer do meu processo de estudo e durante algumas aulas me surgiu um questionamento, foi mais ou menos assim:
 
-- “Se precisa injetar na hora que for instanciar a classe, em algum lugar precisa ser dito que classe que vai ser injetada, se precisa disso precisa de alguém para gerenciar, se precisa de alguém pra gerenciar pode ser um pacote”.
+	- “Se precisa injetar na hora que for instanciar a classe, em algum lugar precisa ser dito que classe que vai ser injetada, se precisa disso precisa de alguém para gerenciar, se precisa de alguém pra gerenciar pode ser um pacote”.
 
-Pois, aí que a gente entra num negocio interessante, outro conceito base que você vai ver em todos grandes frameworks, _Dependency Injection Containers._
+Pois, aí que a gente entra num negocio interessante, o conceito base que você vai ver em todos grandes frameworks, _Dependency Injection Containers._
 
 
 # Containers
 
 
-Esse conceito é interessante, eu expandi a mente pq eu usava containers no Laravel, SpringBoot, NestJS, usava as notations e classes, inicializava os providers no boot do app e tipo sem saber que por trás de cada coisa dessa tava esse conceito aqui. Container é basicamente onde as instancias do seus objetos vão existir, cada objeto do seu código vai ser manipulado por um gerenciador e vão estar dentro desse ambiente (container). No curso que vi, o professor trouxe uma lista com diversos Gerenciador de Containers de Injeção de dependência, suas funcionalidades e performasse nos benchmarks .
+Esse conceito de containers é bem interessante, eu tive uma explosão mental quando comecei a entender, pois eu já usava containers de injeção de dependência no Laravel, SpringBoot, NestJS, sem saber que por de baixo do funcionamento deles usavam os conceitos que vou apresentar.
+
+
+Container é basicamente onde as instancias do seus objetos vão existir, cada objeto do seu código vai ser manipulado por um gerenciador e vão estar dentro desse ambiente (container). Ao assistir um curso sobre Injeção de dependências, o professor trouxe uma lista com diversos Gerenciador de Containers de Injeção de dependência, suas funcionalidades e performance nos benchmarks.
 
 
 ![](https://notion-hugo.pages.dev/api?block_id=352b8e18-e88b-80e7-a2e3-cd0f1669cec5)
 
 
-nesse grafico podemos ver a comparação de diversos tipos de Gerenciadores de container e sua performace em gerenciar cada tipo de injeção, nesse grafico vemos alguns nomes em baixo, sendo eles, singleton, transiente, combined e complex, esses nomes são para definir o escopo do objeto a ser criado,
+Esse gráfico traz uma comparação dos principais Gerenciadores de containers de injeção de dependência do .NET esse gráfico podemos ver a comparação de diversos tipos de Gerenciadores de container e sua performance em gerenciar cada tipo de injeção, nesse gráfico vemos alguns nomes em baixo, sendo eles, singleton, transiente, combined e complex, esses nomes são para definir o escopo do objeto a ser criado. O objetivo de trazer esse gráfico é mais sobre mostrar que apesar do conceito ser o mesmo, há diversas implementações cada uma focada em uma dor em específico. Nosso objetivo é entender os conceitos por traz para toda vez que você ver alguém discutir sobre qual container vai usar em um projeto que você vai participar, você entender o que ta acontecendo por traz dos panos. Agora vamos entender sobre o ciclo de vida de um objeto e como isso afeta nosso o uso em nosso container.
 
 
 # Ciclo de vida de um objeto
+
+
+Quando me pergunto sobre o que é um ciclo de vida, penso em algo que siga o padrão de um inicio, meio e fim, como se fosse um recorte da linha do tempo. O ciclo de vida de um objeto é sobre isso, sobre você dizer como que vai ser comportamento do objeto enquanto uma aplicação estiver rodando. Para tentar ilustrar melhor vamos fazer uma analogia com uma padaria, onde essa padaria seria a aplicação e todo dia é produzido diversos itens(objetos de classes) lá, para facilitar os exemplos vamos levar em consideração a padaria funciona das 07:00 às 20:00, ou seja, nesse intervalo essa aplicação/padaria esta rodando, essa padaria cria vários itens(objetos) podendo ser, bolo, pão e outros itens baseado em suas formas(classe). 
+
+
+Pronto, entendemos o cenário agora vamos fazer um paralelo, um ciclo de vida de um objeto pode ser entendido como o tempo de duração de um objeto dentro da aplicação enquanto ela ta em execução, ou seja, enquanto a padaria ta aberta, faz-se bolo, pão, esses itens tem um ciclo de vida que pode ser visto da seguinte forma, produção(Inicio), exposição(Meio) e venda(Fim). Fazendo paralelo à uma aplicação, quando a gente injeta uma dependência em uma classe, nós temos como dizer para o nosso container qual é o ciclo de vida desse objeto, como ele vai se comportar no inicio, meio e fim. Para isso as linguagens de programação que implementam o POO as classes tem métodos responsáveis por definir esses comportamentos, métodos como construtor e destrutor lidam com o comportamento do objeto quando são criadas e encerradas.
+
+
+	> Porra, agora foi que deu o caraio mesmo, perai, beleza entendi que tem inicio meio e fim, mas o que isso tem a ver com containers e Injeção de Dependência?
+
+
+É ai que entra o conceito de escopo meu parceiro, quando você sabe que existem ciclos de vidas diferentes para seu objeto dentro do container, você consegue definir quais dependências vão ser criadas e assim que a classe que usou a dependência terminar você pode excluir o objeto da memoria, ou casos que quando você injetar um objeto de dependência ele seja o mesmo para qualquer objeto que deseje utilizar aquela classe.
+
+
+# Escopos
+
+
+O Curso que vi trouxe exemplos de escopo de objeto com base no .NET core usa principalmente 3 tipos de escopo:
+
+	- **Transient:**
+		- 
+	- **Singleton:**
+		- 
+	- **Scoped:**
+
+# Resuminho
 
 
 # Referencias
