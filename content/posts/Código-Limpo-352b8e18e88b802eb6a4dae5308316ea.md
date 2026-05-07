@@ -1,7 +1,7 @@
 ---
 title: "Código Limpo"
 date: "2026-04-30T16:55:00.000Z"
-lastmod: "2026-04-30T19:59:00.000Z"
+lastmod: "2026-05-06T20:41:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -17,7 +17,7 @@ NOTION_METADATA:
   object: "page"
   id: "352b8e18-e88b-802e-b6a4-dae5308316ea"
   created_time: "2026-04-30T16:55:00.000Z"
-  last_edited_time: "2026-04-30T19:59:00.000Z"
+  last_edited_time: "2026-05-06T20:41:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -87,7 +87,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-30T19:59:00.000Z"
+      last_edited_time: "2026-05-06T20:41:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -122,7 +122,7 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Código Limpo"
           href: null
-  url: "https://app.notion.com/p/C-digo-Limpo-352b8e18e88b802eb6a4dae5308316ea"
+  url: "https://www.notion.so/C-digo-Limpo-352b8e18e88b802eb6a4dae5308316ea"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
@@ -130,7 +130,25 @@ MANAGED_BY_NOTION_HUGO: true
 ---
 
 
+# Contexto
+
+
+Ah quero entrar no contexto mais não, a partir de agora pressuponho eu que você acompanha, a partir de agora estou fazendo o conteúdo de forma mais simples para não ficar muito atrelado um post ao outro e acabar dificultando o entendimento pois não pegou o conteúdo anterior. Assim, a gente vai falar hoje sobre código limpo, discutir sobre algumas ideias e filosofias em volta do código limpo, trazendo paralelo do cotidiano pra facilitar a compreensão.
+
+
+# Código limpo
+
+
+{{< notion-unsupported-block type=synced_block >}}
+
+
+A final o que é um código limpo? Quando a gente pensa em algo limpo pode se dizer que é algo que não tem sujeira, partindo desse pressuposto me diga, o que você entende por sujeira em um código? Bom, depois de entender melhor sobre como funciona o conceito de orientação a objetos, você percebe que um objeto do mundo real e um objeto de uma classe, esses objetos estão dispersos pelo espaço ou ambiente onde ele foi criado, onde esse ambiente a depender de quem esteja programando pode ter todos os objetos organizadinhos, eu tenho em minha mente um paralelo com meu quarto, eu posso chegar hoje tirar a calça e jogar no chão, ou deixar o prato na comoda, ou deixar de varrer, toda essas coisas vão deteriorando o meu quarto, ou seja o meu ambiente, em paralelo com a programação, é como se seu menu explorer fosse o ambiente, e cada classe, interface criada fosse um objeto em um canto do quarto. 
+
+
 # References
+
+
+[https://www.gov.br/governodigital/pt-br/estrategias-e-governanca-digital/startupgovbr/guia-gps/pages/5-saiba-mais/praticas-de-engenharia-de-software/clean-code](https://www.gov.br/governodigital/pt-br/estrategias-e-governanca-digital/startupgovbr/guia-gps/pages/5-saiba-mais/praticas-de-engenharia-de-software/clean-code)
 
 
 [https://medium.com/@FilipeDeschamps/clean-code-2-o-que-%C3%A9-c%C3%B3digo-limpo-869047c1492a](https://medium.com/@FilipeDeschamps/clean-code-2-o-que-%C3%A9-c%C3%B3digo-limpo-869047c1492a)
