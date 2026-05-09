@@ -1,7 +1,7 @@
 ---
 title: "Código Limpo"
 date: "2026-04-30T16:55:00.000Z"
-lastmod: "2026-05-06T20:41:00.000Z"
+lastmod: "2026-05-07T16:53:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -17,7 +17,7 @@ NOTION_METADATA:
   object: "page"
   id: "352b8e18-e88b-802e-b6a4-dae5308316ea"
   created_time: "2026-04-30T16:55:00.000Z"
-  last_edited_time: "2026-05-06T20:41:00.000Z"
+  last_edited_time: "2026-05-07T16:53:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -27,7 +27,7 @@ NOTION_METADATA:
   cover: null
   icon:
     type: "emoji"
-    emoji: "🛁"
+    emoji: "🧹"
   parent:
     type: "data_source_id"
     data_source_id: "1e6b8e18-e88b-8311-a61f-0775b643d0d5"
@@ -87,7 +87,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-06T20:41:00.000Z"
+      last_edited_time: "2026-05-07T16:53:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
