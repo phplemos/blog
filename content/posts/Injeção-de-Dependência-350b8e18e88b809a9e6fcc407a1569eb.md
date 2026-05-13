@@ -1,11 +1,11 @@
 ---
 title: "Injeção de Dependência"
 date: "2026-04-28T16:06:00.000Z"
-lastmod: "2026-05-06T20:04:00.000Z"
+lastmod: "2026-05-12T15:24:00.000Z"
 draft: false
 series:
   - "Roadmap CEPEDI"
-Status: "In progress"
+Status: "Done"
 authors:
   - "Pedro Henrique Pinheiro Lemos"
 tags:
@@ -18,13 +18,13 @@ NOTION_METADATA:
   object: "page"
   id: "350b8e18-e88b-809a-9e6f-cc407a1569eb"
   created_time: "2026-04-28T16:06:00.000Z"
-  last_edited_time: "2026-05-06T20:04:00.000Z"
+  last_edited_time: "2026-05-12T15:24:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
   last_edited_by:
     object: "user"
-    id: "7139b64c-7267-446b-aa5a-5024eba8323f"
+    id: "00000000-0000-0000-0000-000000000003"
   cover: null
   icon:
     type: "emoji"
@@ -52,9 +52,9 @@ NOTION_METADATA:
       id: "X%7B%7CN"
       type: "status"
       status:
-        id: "5999515d-ba29-4885-9115-b5c104c63d07"
-        name: "In progress"
-        color: "blue"
+        id: "9c0b6961-37cf-4f7e-b24c-7e472f46e53d"
+        name: "Done"
+        color: "green"
     authors:
       id: "bK%3B%5B"
       type: "people"
@@ -94,7 +94,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-06T20:04:00.000Z"
+      last_edited_time: "2026-05-12T15:24:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"

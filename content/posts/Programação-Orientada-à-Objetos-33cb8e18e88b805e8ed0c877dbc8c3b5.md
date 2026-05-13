@@ -1,7 +1,7 @@
 ---
 title: "Programação Orientada à Objetos"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-04-30T16:58:00.000Z"
+lastmod: "2026-05-12T21:16:00.000Z"
 draft: false
 series:
   - "Roadmap CEPEDI"
@@ -16,7 +16,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-04-30T16:58:00.000Z"
+  last_edited_time: "2026-05-12T21:16:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -86,7 +86,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-04-30T16:58:00.000Z"
+      last_edited_time: "2026-05-12T21:16:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -108,8 +108,8 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Programação Orientada à Objetos"
           href: null
-  url: "https://app.notion.com/p/Programa-o-Orientada-Objetos-33cb8e18e88b805e8ed\
-    0c877dbc8c3b5"
+  url: "https://www.notion.so/Programa-o-Orientada-Objetos-33cb8e18e88b805e8ed0c8\
+    77dbc8c3b5"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
@@ -224,7 +224,7 @@ E oque seria o comportamento? O comportamento é quando você tem métodos da pr
 Após a gente entender sobre classe e objeto e que eles tem estados e comportamentos a gente pode ir mais afundo sobre essa ideia e trazer mais coisas do mundo real para o mundo digital. Dentro da POO a gente tem um conceito bem legal chamado **Herança**, da para a gente fazer uma analogia bem fácil de entender. 
 
 
-O conceito de herança é similar a herança que a gente entende da vida, por exemplo, você herdou caracteristicas de seus pais ou seja imagine que eles são como uma classe pai/mãe. Na programação uma classe pode herdar atributos ou métodos de outra, Vamos fazer uma analogia com o mundo animal, imagine uma classe animal Animal, como sabemos existem diversos tipos de animais podendo ser herbívoros, carnívoros, formas de andar podendo ser bípede, quadrupede, mas todos no final são animais e tem as mesmas propriedades base. 
+O conceito de herança é similar a herança que a gente entende da vida, por exemplo, você herdou características de seus pais ou seja imagine que eles são como uma classe pai/mãe. Na programação uma classe pode herdar atributos ou métodos de outra, Vamos fazer uma analogia com o mundo animal, imagine uma classe animal Animal, como sabemos existem diversos tipos de animais podendo ser herbívoros, carnívoros, formas de andar podendo ser bípede, quadrupede, mas todos no final são animais e tem as mesmas propriedades base. 
 
 
 Com isso em mente, podemos criar uma classe Cachorro que herda as propriedades de Animal. Assim ao criar a classe Cachorro ele vai ter os mesmos atributos e métodos que a classe pai(Animal) e seus atributos e métodos únicos. Para facilitar o entendimento vamos utilizar como classificação de animais o conteúdo publicado no seguinte site .
