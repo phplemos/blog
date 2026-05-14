@@ -1,7 +1,7 @@
 ---
-title: "LifeOS - Meu Sistema de gestão pessoal"
-date: "2026-05-12T15:17:00.000Z"
-lastmod: "2026-05-13T19:07:00.000Z"
+title: "Arquitetura de software"
+date: "2026-05-13T17:04:00.000Z"
+lastmod: "2026-05-13T17:04:00.000Z"
 draft: true
 series: []
 Status: "Not started"
@@ -11,9 +11,9 @@ tags: []
 categories: []
 NOTION_METADATA:
   object: "page"
-  id: "35eb8e18-e88b-80a8-b05a-d073210ac3c6"
-  created_time: "2026-05-12T15:17:00.000Z"
-  last_edited_time: "2026-05-13T19:07:00.000Z"
+  id: "35fb8e18-e88b-8029-8244-e4427ece8d48"
+  created_time: "2026-05-13T17:04:00.000Z"
+  last_edited_time: "2026-05-13T17:04:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -21,9 +21,7 @@ NOTION_METADATA:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
   cover: null
-  icon:
-    type: "emoji"
-    emoji: "🎈"
+  icon: null
   parent:
     type: "data_source_id"
     data_source_id: "1e6b8e18-e88b-8311-a61f-0775b643d0d5"
@@ -74,7 +72,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-13T19:07:00.000Z"
+      last_edited_time: "2026-05-13T17:04:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -85,7 +83,7 @@ NOTION_METADATA:
       title:
         - type: "text"
           text:
-            content: "LifeOS - Meu Sistema de gestão pessoal"
+            content: "Arquitetura de software"
             link: null
           annotations:
             bold: false
@@ -94,70 +92,13 @@ NOTION_METADATA:
             underline: false
             code: false
             color: "default"
-          plain_text: "LifeOS - Meu Sistema de gestão pessoal"
+          plain_text: "Arquitetura de software"
           href: null
-  url: "https://www.notion.so/LifeOS-Meu-Sistema-de-gest-o-pessoal-35eb8e18e88b80\
-    a8b05ad073210ac3c6"
+  url: "https://www.notion.so/Arquitetura-de-software-35fb8e18e88b80298244e4427ec\
+    e8d48"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
 
 ---
-
-
-# Contexto
-
-
-# Areas da vida
-
-
-## Profissional
-
-
-## Pessoal
-
-
-### Relacionamentos
-
-
-## Acadêmico
-
-
-# Modelagem do problema
-
-
-## Entendendo o problema
-
-
-## Autoconhecimento
-
-
-### Hábitos
-
-
-## Metodologias
-
-
-### Inicio da escrita
-
-
-### Planejamento diário
-
-
-### 
-
-
-# Notion
-
-
-# Necessidade de expansão 
-
-
-# Interfaces
-
-
-## Web
-
-
-## Mobile
 

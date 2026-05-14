@@ -1,7 +1,7 @@
 ---
 title: "Programação Orientada à Objetos"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-05-12T21:16:00.000Z"
+lastmod: "2026-05-13T21:02:00.000Z"
 draft: false
 series:
   - "Roadmap CEPEDI"
@@ -16,7 +16,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-05-12T21:16:00.000Z"
+  last_edited_time: "2026-05-13T21:02:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -86,7 +86,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-12T21:16:00.000Z"
+      last_edited_time: "2026-05-13T21:02:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -272,11 +272,10 @@ Agora vamos entender melhor, nós criamos uma classe pai chamada animal, essa cl
 Após entender sobre classes e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender melhor. Esse conceito está em volta do que chamamos de “Classe Abstrata” ou  `abstract class`. 
 
 
-> Beleza entendi, mas me diga oque é uma classe abstrata?  
+	> Beleza entendi, mas me diga oque é uma classe abstrata?  
 
 
-Em uma busca simples no google ele me trouxe que: “In object-oriented programming (OOP), an **abstract class** is a restricted class that cannot be used to create objects (you cannot instantiate it directly). To access it, it must be inherited by another class.”
-Ou seja, uma classe abstrata você não pode usar ela pra criar objetos mas sim pra definir o “contrato” que uma classe vai herda, você não é obrigado a implementar o comportamento, ela é uma classe que apenas pode ser herdada ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
+Em uma busca simples no google ele me trouxe que: “In object-oriented programming (OOP), an **abstract class** is a restricted class that cannot be used to create objects (you cannot instantiate it directly). To access it, it must be inherited by another class.” Ou seja, uma classe abstrata você não pode usar ela pra criar objetos mas sim pra definir o “contrato” que uma classe vai herda, você não é obrigado a implementar o comportamento, ela é uma classe que apenas pode ser herdada ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:
 
 
 ```typescript
@@ -287,40 +286,82 @@ abstract class Pessoa {
         this.nome = nome;
     }
 
-    display(): void{
+    visualizarNome(): void{
         console.log(this.nome);
     }
 
-    abstract buscar(string): Pessoa;
+    abstract buscarPessoa(nome: string): Pessoa;
 }
 
-class Employee extends Person { 
-    empCode: number;
+class Empregado extends Pessoa { 
+    empregadoId: number;
     
-    constructor(name: string, code: number) { 
-        super(name); // must call super()
-        this.empCode = code;
+    constructor(nome: string, code: number) { 
+        super(nome); 
+        this.empregadoId = code;
     }
-
-    find(name:string): Person { 
-        return new Employee(name, 1);
+    buscarPessoa(nome:string): Pessoa { 
+        return new Pessoa(nome);
     }
 }
 
-let emp: Person = new Employee("James", 100);
-emp.display(); //James
+let emp: Pessoa = new Empregado("James", 100);
+emp.visualizarNome(); //James
 
-let emp2: Person = emp.find('Steve');
+let emp2: Pessoa = emp.buscar('Steve');
 ```
+
+
+Eu tenho duas classes `Pessoa` e `Empregado` que herda de `Pessoa`, Pessoa é uma classe abstrata ou seja, ela não pode ser instanciada e ela pode delegar métodos que quem for implementar ela tem que implementar para poder utilizar, empregado estende de Pessoa e implementa o comportamento desejado do método `buscarPessoa(nome: string): Pessoa`. Esse conceito de abstração aplicado à POO é bem interessante e mais à frente vamos ver aplicações dele em padrões e boas práticas de código.
 
 
 ## Polimorfismo
 
 
-Polimorfismo a gente entra um pouco no comportamento de uma classe, onde ao extender uma classe cada uma pode se comportar de muitas formas, daí o nome polimorfismo. Para entender melhor vamos utilizar o mesmo conceito de animais
+Polimorfismo a gente entra no que tange sobre o comportamento de uma classe, onde ao extender uma classe cada uma pode se comportar de muitas formas, daí o nome polimorfismo. Ao buscar sobre a etimologia (origem da palavra) polimorfismo me deparei o seguinte, “poli” vem do grego “_polýs”_, significa “muito” e morfismo  “_morphé” significa “_formas”, ou seja, muitas formas, um objeto  de uma classe pode apresentar diversos comportamentos ou diversas formas, isso é interessante pois faz muito sentido. Um exemplo de polimorfismo muito utilizado é sobre a categoria de animais, mais precisamente sobre mamíferos, existem diversos tipos de mamíferos e todos eles fazem a maioria das mesmas atividades mas de formas diferentes. Exemplo, todo mamífero apresenta sistema pulmonar, mas cada uma espécie de mamífero respira de forma diferente, Um cachorro respira diferente de uma foca, mas ambos são mamíferos. Baseado nesse exemplo a gente percebe que apesar de ambos herdarem as características em comum de mamíferos eles precisaram criar o comportamento específico deles apesar de ter o mesmo objetivo, oxigenar as células, respirar.
 
 
-> Breve mais detalhes
+Bora ver esse exemplo em código:
+
+
+```typescript
+abstract class Mamifero{
+	nome: string;
+	
+	verMamifero(): string {
+		return nome;
+	}
+	
+	abstract respirar(): string;
+}
+
+class Cachorro extends Mamífero {
+	raca: string;
+	
+	constructor(nome:string){
+		super(nome);
+		this.raca = "caramelo";
+	}
+	
+	respirar(): string {
+		return "respirei";
+	}
+}
+
+
+class Cachorro extends Mamífero {
+	raca: string;
+	
+	constructor(nome:string){
+		super(nome);
+		this.raca = "caramelo";
+	}
+	
+	respirar(): string {
+		return "respirei";
+	}
+}
+```
 
 
 ## Encapsulamento
