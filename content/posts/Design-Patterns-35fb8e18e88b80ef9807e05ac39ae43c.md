@@ -1,19 +1,23 @@
 ---
 title: "Design Patterns"
 date: "2026-05-13T17:04:00.000Z"
-lastmod: "2026-05-13T20:24:00.000Z"
+lastmod: "2026-05-14T17:59:00.000Z"
 draft: true
-series: []
+series:
+  - "Roadmap CEPEDI"
 Status: "In progress"
 authors:
   - "Pedro Henrique Pinheiro Lemos"
-tags: []
-categories: []
+tags:
+  - "PATTERNS"
+  - "DESIGN PATTERNS"
+categories:
+  - "article"
 NOTION_METADATA:
   object: "page"
   id: "35fb8e18-e88b-80ef-9807-e05ac39ae43c"
   created_time: "2026-05-13T17:04:00.000Z"
-  last_edited_time: "2026-05-13T20:24:00.000Z"
+  last_edited_time: "2026-05-14T17:59:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -33,7 +37,10 @@ NOTION_METADATA:
     series:
       id: "B%3C%3FS"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "02a4eb89-2f55-40be-ab7e-4489df020e63"
+          name: "Roadmap CEPEDI"
+          color: "orange"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -64,15 +71,24 @@ NOTION_METADATA:
     tags:
       id: "jw%7CC"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "fc85eb6c-ed72-45c3-8b75-82f1acc267a1"
+          name: "PATTERNS"
+          color: "red"
+        - id: "3affeb57-d17f-4355-8fa1-19fee4f5d494"
+          name: "DESIGN PATTERNS"
+          color: "gray"
     categories:
       id: "nbY%3F"
       type: "multi_select"
-      multi_select: []
+      multi_select:
+        - id: "a68c3a8e-8faf-4d33-bded-7afde47e7676"
+          name: "article"
+          color: "blue"
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-13T20:24:00.000Z"
+      last_edited_time: "2026-05-14T17:59:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
