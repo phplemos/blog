@@ -1,7 +1,7 @@
 ---
 title: "Design Patterns"
 date: "2026-05-13T17:04:00.000Z"
-lastmod: "2026-05-14T17:59:00.000Z"
+lastmod: "2026-05-17T00:11:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -17,7 +17,7 @@ NOTION_METADATA:
   object: "page"
   id: "35fb8e18-e88b-80ef-9807-e05ac39ae43c"
   created_time: "2026-05-13T17:04:00.000Z"
-  last_edited_time: "2026-05-14T17:59:00.000Z"
+  last_edited_time: "2026-05-17T00:11:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -88,7 +88,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-14T17:59:00.000Z"
+      last_edited_time: "2026-05-17T00:11:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -116,4 +116,34 @@ NOTION_METADATA:
 MANAGED_BY_NOTION_HUGO: true
 
 ---
+
+
+# Contexto
+
+
+Continuando a analogia do ambiente, esse post vai tratar justamente dos padrões de organização de objetos com base no tipo de objeto e seu ciclo de vida, existem dezenas de padrões de objetos mas nós vamos nos concentrar nos mais utilizados pela comunidade, conhecido com os padrões do GoF (Gang of Four), desenvolvedores importantes na area trouxeram a definição de diversos patterns dos mais utilizados hoje em dia. Nós vamos falar sobre 3 mais conhecidos dentre os 3 tipos de Padrões. Esse post tende a ser mais rápido pois vou focar mais na ideia do que necessariamente na implementação.
+
+
+# Design Patterns
+
+
+Voltando a analogia do ambiente, vejo o design pattern como regras de como os objetos devem se comportar em um determinado ambiente, regras de como fazer objetos num molde que define exatamente onde vai estar, organizadinho sem nenhuma bagunça, como se fosse um quarto arrumado e tudo no seu devido lugar, 
+
+
+![](https://notion-hugo.pages.dev/api?block_id=363b8e18-e88b-80f1-8a05-f0ca78b585bf)
+
+
+## Tipos
+
+
+### Creational Patterns
+
+
+### Structural Patterns
+
+
+### Behavioral Patterns
+
+
+# Conclusão
 
