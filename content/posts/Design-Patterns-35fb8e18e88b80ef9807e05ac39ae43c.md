@@ -1,7 +1,7 @@
 ---
 title: "Design Patterns"
 date: "2026-05-13T17:04:00.000Z"
-lastmod: "2026-05-17T00:11:00.000Z"
+lastmod: "2026-05-19T19:15:00.000Z"
 draft: true
 series:
   - "Roadmap CEPEDI"
@@ -17,7 +17,7 @@ NOTION_METADATA:
   object: "page"
   id: "35fb8e18-e88b-80ef-9807-e05ac39ae43c"
   created_time: "2026-05-13T17:04:00.000Z"
-  last_edited_time: "2026-05-17T00:11:00.000Z"
+  last_edited_time: "2026-05-19T19:15:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -88,7 +88,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-17T00:11:00.000Z"
+      last_edited_time: "2026-05-19T19:15:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -121,7 +121,7 @@ MANAGED_BY_NOTION_HUGO: true
 # Contexto
 
 
-Continuando a analogia do ambiente, esse post vai tratar justamente dos padrões de organização de objetos com base no tipo de objeto e seu ciclo de vida, existem dezenas de padrões de objetos mas nós vamos nos concentrar nos mais utilizados pela comunidade, conhecido com os padrões do GoF (Gang of Four), desenvolvedores importantes na area trouxeram a definição de diversos patterns dos mais utilizados hoje em dia. Nós vamos falar sobre 3 mais conhecidos dentre os 3 tipos de Padrões. Esse post tende a ser mais rápido pois vou focar mais na ideia do que necessariamente na implementação.
+Continuando a analogia do ambiente, esse post vai tratar justamente dos padrões de organização de objetos com base no tipo de objeto e seu ciclo de vida, existem dezenas de padrões de objetos mas nós vamos nos concentrar nos mais utilizados pela comunidade, conhecido com os padrões do GoF (Gang of Four), desenvolvedores importantes na area trouxeram definições de diversos padrões dos mais utilizados hoje em dia. Nós vamos falar sobre 3 mais conhecidos entre os 3 tipos de Padrões. Esse post tende a ser mais rápido pois vou focar mais na ideia do que necessariamente na implementação.
 
 
 # Design Patterns
@@ -133,16 +133,37 @@ Voltando a analogia do ambiente, vejo o design pattern como regras de como os ob
 ![](https://notion-hugo.pages.dev/api?block_id=363b8e18-e88b-80f1-8a05-f0ca78b585bf)
 
 
+Essa imagem representa um local organizado com seus devidos padrões de design, seria esses padrões desse ambiente da imagem é um dos paralelos que podemos fazer pra entender melhor a ideia.
+
+
 ## Tipos
+
+
+Bom, como podemos ver na imagem há vários objetos dispersos de forma diferente no ambiente, uns organizados de um jeito seguindo um padrão outros seguindo outro padrão. Agora vamos ver que na programação também existe padrões para determinados tipos de objetos, onde já existe categorias de problemas recorrentes na comunidade, então foi se pensado alguns padrões de design de código visando solucionar esses problemas. Assim os próximos tópicos vão abordar justamente os 3 tipos de patterns que o “GoF” traz.
+
+
+![](https://notion-hugo.pages.dev/api?block_id=365b8e18-e88b-8053-87d0-f4cfb0e52f7a)
 
 
 ### Creational Patterns
 
 
+São patterns que estão relacionados ao ciclo de criação de um objeto, fornecendo meios de criação de um objeto e de como ele será instanciado
+
+
+Esse Design tem o intuito de ser meio que uma fábrica, você precisa de um objeto de determinado tipo? pronto parceiro vo montar uma fábrica dele aqui, ou seja, ele fornece métodos que fornecem meios de obter um objeto do tipo dele. Calma, vamos dar uma olhada no diagrama pra entender mior
+
+
 ### Structural Patterns
 
 
+Tratam da composição de objetos por heranças e interfaces para diferentes funcionalidades.
+
+
 ### Behavioral Patterns
+
+
+Tratam das interações e comunicação entre os objetos além da divisão de responsabilidades.
 
 
 # Conclusão
