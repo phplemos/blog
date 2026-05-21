@@ -1,11 +1,11 @@
 ---
 title: "Programação Orientada à Objetos"
 date: "2026-04-08T19:10:00.000Z"
-lastmod: "2026-05-13T21:02:00.000Z"
+lastmod: "2026-05-20T17:03:00.000Z"
 draft: false
 series:
   - "Roadmap CEPEDI"
-Status: "Need to be reviewed"
+Status: "Done"
 authors:
   - "Pedro Henrique Pinheiro Lemos"
 tags:
@@ -16,7 +16,7 @@ NOTION_METADATA:
   object: "page"
   id: "33cb8e18-e88b-805e-8ed0-c877dbc8c3b5"
   created_time: "2026-04-08T19:10:00.000Z"
-  last_edited_time: "2026-05-13T21:02:00.000Z"
+  last_edited_time: "2026-05-20T17:03:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -50,9 +50,9 @@ NOTION_METADATA:
       id: "X%7B%7CN"
       type: "status"
       status:
-        id: "=nd{"
-        name: "Need to be reviewed"
-        color: "yellow"
+        id: "9c0b6961-37cf-4f7e-b24c-7e472f46e53d"
+        name: "Done"
+        color: "green"
     authors:
       id: "bK%3B%5B"
       type: "people"
@@ -86,7 +86,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-13T21:02:00.000Z"
+      last_edited_time: "2026-05-20T17:03:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
