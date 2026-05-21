@@ -29,6 +29,7 @@ unsafe = true
     colorScheme = "auto"
     hideColorSchemeToggle = false
     maxSeeAlsoItems = 5
+    customCSS = ["css/custom.css"]
 
 [[params.social]]
 name = "Github"

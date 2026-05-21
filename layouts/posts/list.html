@@ -1,0 +1,252 @@
+{{ define "title" }}
+  {{ title (i18n (lower .Title)) | default .Title }} · {{ .Site.Title }}
+{{ end }}
+
+{{ define "content" }}
+<div class="posts-dashboard">
+  <header class="dashboard-header">
+    <h1 class="title">
+      <a class="title-link" href="{{ .Permalink | safeURL }}">
+        {{ title (i18n (lower .Title)) | default .Title }}
+      </a>
+    </h1>
+    
+    <!-- DASHBOARD CONTROLS -->
+    <div class="dashboard-controls">
+      <!-- Search Input -->
+      <div class="search-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="search-input" placeholder="Search posts by title, description, or tag..." autocomplete="off">
+      </div>
+      
+      <!-- Sort Select -->
+      <div class="sort-wrapper">
+        <label for="sort-select">Sort by:</label>
+        <div class="select-container">
+          <select id="sort-select">
+            <option value="date-desc">Date: Newest First</option>
+            <option value="date-asc">Date: Oldest First</option>
+            <option value="title-asc">Title: A-Z</option>
+            <option value="title-desc">Title: Z-A</option>
+            <option value="reading-desc">Reading Time: Longest</option>
+            <option value="reading-asc">Reading Time: Shortest</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAG FILTERS -->
+    <div class="tags-filter-wrapper">
+      <span class="tags-label">Filter by Tag:</span>
+      <div class="tags-list-container" id="tags-filter-list">
+        <button class="tag-btn active" data-tag="all">All</button>
+        <!-- Dynamic tags rendering via Hugo -->
+        {{ $allTags := slice }}
+        {{ range .RegularPages }}
+          {{ with .Params.tags }}
+            {{ range . }}
+              {{ $allTags = $allTags | union (slice .) }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
+        {{ range $allTags }}
+          <button class="tag-btn" data-tag="{{ . | lower }}">{{ . }}</button>
+        {{ end }}
+      </div>
+    </div>
+  </header>
+
+  {{ .Content }}
+
+  <!-- POST CARDS GRID -->
+  <div class="cards-grid" id="posts-grid">
+    {{ range .RegularPages }}
+    {{ $readingTime := .ReadingTime }}
+    
+    <!-- Convert tags array to space-separated lowercased string for JS filtering -->
+    {{ $tagsStr := "" }}
+    {{ with .Params.tags }}
+      {{ $loweredTags := slice }}
+      {{ range . }}
+        {{ $loweredTags = $loweredTags | append (lower .) }}
+      {{ end }}
+      {{ $tagsStr = delimit $loweredTags " " }}
+    {{ end }}
+    
+    <!-- Card element with data attributes for JS filtering & sorting -->
+    <article class="post-card" 
+             data-title="{{ .Title | lower }}"
+             data-date="{{ .Date.Unix }}"
+             data-reading="{{ $readingTime }}"
+             data-tags="{{ $tagsStr }}"
+             data-summary="{{ if .Params.summary }}{{ .Params.summary | lower }}{{ else }}{{ .Summary | lower }}{{ end }}">
+      <div class="card-inner">
+        <!-- Card Header Image/Emoji -->
+        {{ if .Params.featuredImage }}
+          <div class="card-image" style="background-image: url('{{ .Params.featuredImage | relURL }}')"></div>
+        {{ else if and .Params.NOTION_METADATA .Params.NOTION_METADATA.cover }}
+          <div class="card-image" style="background-image: url('{{ .Params.NOTION_METADATA.cover | relURL }}')"></div>
+        {{ else if and .Params.NOTION_METADATA .Params.NOTION_METADATA.icon (eq .Params.NOTION_METADATA.icon.type "emoji") }}
+          <div class="card-emoji-header">
+            <span class="card-emoji">{{ .Params.NOTION_METADATA.icon.emoji }}</span>
+          </div>
+        {{ else }}
+          <div class="card-emoji-header">
+            <span class="card-emoji">📝</span>
+          </div>
+        {{ end }}
+        
+        <div class="card-body">
+          <!-- Meta (Date and Reading Time) -->
+          <div class="card-meta">
+            <span class="card-date">
+              <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+              {{ .Date | time.Format (.Site.Params.dateFormat | default "January 2, 2006") }}
+            </span>
+            <span class="card-reading-time">
+              <i class="fa-solid fa-clock" aria-hidden="true"></i>
+              {{ $readingTime }} min read
+            </span>
+          </div>
+          
+          <!-- Title -->
+          <h2 class="card-title">
+            <a href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          
+          <!-- Summary Description -->
+          <p class="card-summary">
+            {{ if .Params.summary }}
+              {{ .Params.summary | truncate 130 }}
+            {{ else if .Summary }}
+              {{ .Summary | truncate 130 }}
+            {{ else }}
+              No description available.
+            {{ end }}
+          </p>
+          
+          <!-- Tags list inside card -->
+          {{ with .Params.tags }}
+          <div class="card-tags">
+            {{ range . }}
+            <span class="card-tag">#{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </article>
+    {{ end }}
+  </div>
+  
+  <!-- Empty State Message -->
+  <div class="no-posts-message" id="no-posts-msg" style="display: none;">
+    <p>No posts match your filters. Try search something else or clearing the filters!</p>
+  </div>
+</div>
+
+<!-- CLIENT SIDE FILTERING AND SORTING SCRIPT -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('search-input');
+  const sortSelect = document.getElementById('sort-select');
+  const tagsContainer = document.getElementById('tags-filter-list');
+  const postsGrid = document.getElementById('posts-grid');
+  const noPostsMsg = document.getElementById('no-posts-msg');
+  const cards = Array.from(postsGrid.getElementsByClassName('post-card'));
+  
+  let activeTag = 'all';
+  let searchQuery = '';
+  
+  // Tag Filter Click Handler
+  tagsContainer.addEventListener('click', (e) => {
+    const btn = e.target.closest('.tag-btn');
+    if (!btn) return;
+    
+    // Toggle active state
+    tagsContainer.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    activeTag = btn.getAttribute('data-tag');
+    filterAndSortPosts();
+  });
+  
+  // Search Input Handler
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value.toLowerCase().trim();
+    filterAndSortPosts();
+  });
+  
+  // Sort Select Handler
+  sortSelect.addEventListener('change', () => {
+    filterAndSortPosts();
+  });
+  
+  function filterAndSortPosts() {
+    let visibleCards = [];
+    
+    // Filter cards
+    cards.forEach(card => {
+      const title = card.getAttribute('data-title') || '';
+      const summary = card.getAttribute('data-summary') || '';
+      const tags = (card.getAttribute('data-tags') || '').split(' ').filter(Boolean);
+      
+      const matchesSearch = searchQuery === '' || 
+                            title.includes(searchQuery) || 
+                            summary.includes(searchQuery) ||
+                            tags.some(t => t.includes(searchQuery));
+                            
+      const matchesTag = activeTag === 'all' || tags.includes(activeTag);
+      
+      if (matchesSearch && matchesTag) {
+        visibleCards.push(card);
+        card.style.display = '';
+        // Small transition trigger
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'scale(1)';
+        }, 10);
+      } else {
+        card.style.display = 'none';
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.95)';
+      }
+    });
+    
+    // Sort visible cards
+    const sortVal = sortSelect.value;
+    visibleCards.sort((a, b) => {
+      if (sortVal === 'date-desc') {
+        return parseInt(b.getAttribute('data-date')) - parseInt(a.getAttribute('data-date'));
+      } else if (sortVal === 'date-asc') {
+        return parseInt(a.getAttribute('data-date')) - parseInt(b.getAttribute('data-date'));
+      } else if (sortVal === 'title-asc') {
+        return (a.getAttribute('data-title') || '').localeCompare(b.getAttribute('data-title') || '');
+      } else if (sortVal === 'title-desc') {
+        return (b.getAttribute('data-title') || '').localeCompare(a.getAttribute('data-title') || '');
+      } else if (sortVal === 'reading-desc') {
+        return parseInt(b.getAttribute('data-reading') || '0') - parseInt(a.getAttribute('data-reading') || '0');
+      } else if (sortVal === 'reading-asc') {
+        return parseInt(a.getAttribute('data-reading') || '0') - parseInt(b.getAttribute('data-reading') || '0');
+      }
+      return 0;
+    });
+    
+    // Reorder DOM nodes based on sorted order
+    visibleCards.forEach(card => {
+      postsGrid.appendChild(card);
+    });
+    
+    // Toggle Empty state notice
+    if (visibleCards.length === 0) {
+      noPostsMsg.style.display = 'block';
+    } else {
+      noPostsMsg.style.display = 'none';
+    }
+  }
+  
+  // Initialize filter/sort on load
+  filterAndSortPosts();
+});
+</script>
+{{ end }}
