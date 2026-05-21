@@ -3,7 +3,12 @@ import {
   GetBlockResponse,
   RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { CustomTransformer, MdBlock, NotionToMarkdownOptions } from "./types";
+import {
+  CustomTransformer,
+  MdBlock,
+  NotionToMarkdownOptions,
+  CalloutIcon,
+} from "./types";
 import * as md from "./md";
 import { getBlockChildren, getPageRelrefFromId } from "./notion";
 import { plainText } from "./md";
@@ -24,7 +29,7 @@ export class NotionToMarkdown {
   }
   setCustomTransformer(
     type: string,
-    transformer: CustomTransformer
+    transformer: CustomTransformer,
   ): NotionToMarkdown {
     this.customTransformers[type] = transformer;
 
@@ -33,8 +38,8 @@ export class NotionToMarkdown {
   setCustomRichTextTransformer(
     transformer: (
       textArray: RichTextItemResponse[],
-      notion: Client
-    ) => Promise<string>
+      notion: Client,
+    ) => Promise<string>,
   ) {
     this.richText = (textArray: RichTextItemResponse[]) =>
       transformer(textArray, this.notionClient);
@@ -74,7 +79,7 @@ export class NotionToMarkdown {
         } else {
           mdString += this.toMarkdownString(
             mdBlocks.children,
-            nestingLevel + 1
+            nestingLevel + 1,
           );
         }
       }
@@ -90,11 +95,11 @@ export class NotionToMarkdown {
    */
   async pageToMarkdown(
     id: string,
-    totalPage: number | null = null
+    totalPage: number | null = null,
   ): Promise<MdBlock[]> {
     if (!this.notionClient) {
       throw new Error(
-        "notion client is not provided, for more details check out https://github.com/souvikinator/notion-to-md"
+        "notion client is not provided, for more details check out https://github.com/souvikinator/notion-to-md",
       );
     }
 
@@ -114,11 +119,11 @@ export class NotionToMarkdown {
   async blocksToMarkdown(
     blocks?: GetBlockResponse[],
     totalPage: number | null = null,
-    mdBlocks: MdBlock[] = []
+    mdBlocks: MdBlock[] = [],
   ): Promise<MdBlock[]> {
     if (!this.notionClient) {
       throw new Error(
-        "notion client is not provided, for more details check out https://github.com/souvikinator/notion-to-md"
+        "notion client is not provided, for more details check out https://github.com/souvikinator/notion-to-md",
       );
     }
 
@@ -150,7 +155,7 @@ export class NotionToMarkdown {
         let child_blocks = await getBlockChildren(
           this.notionClient,
           block.id,
-          totalPage
+          totalPage,
         );
 
         mdBlocks.push({
@@ -163,7 +168,7 @@ export class NotionToMarkdown {
         await this.blocksToMarkdown(
           child_blocks,
           totalPage,
-          mdBlocks[mdBlocks.length - 1].children
+          mdBlocks[mdBlocks.length - 1].children,
         );
         continue;
       }
@@ -177,7 +182,6 @@ export class NotionToMarkdown {
     }
     return mdBlocks;
   }
-
 
   /**
    * Converts a Notion Block to a Markdown Block
@@ -212,7 +216,9 @@ export class NotionToMarkdown {
       case "file": {
         const file = block.file;
         const link =
-          file.type === "external" ? file.external.url : blockIdToApiUrl(block.id);
+          file.type === "external"
+            ? file.external.url
+            : blockIdToApiUrl(block.id);
         return md.link(file.name, link);
       }
       case "bookmark": {
@@ -229,7 +235,7 @@ export class NotionToMarkdown {
         if (linkToPage.type === "page_id") {
           const { title, relref } = await getPageRelrefFromId(
             linkToPage.page_id,
-            this.notionClient
+            this.notionClient,
           );
           return md.link(title, relref);
         } else if (linkToPage.type === "comment_id") {
@@ -243,7 +249,8 @@ export class NotionToMarkdown {
       }
       case "embed": {
         const embed = block.embed;
-        const title = embed.caption.length > 0 ? plainText(embed.caption) : embed.url;
+        const title =
+          embed.caption.length > 0 ? plainText(embed.caption) : embed.url;
         return md.link(title, embed.url);
       }
       case "link_preview": {
@@ -289,7 +296,7 @@ export class NotionToMarkdown {
                 await this.blockToMarkdown({
                   type: "paragraph",
                   paragraph: { rich_text: cell },
-                } as GetBlockResponse)
+                } as GetBlockResponse),
             );
 
             const cellStringArr = await Promise.all(cellStringPromise);
@@ -310,11 +317,11 @@ export class NotionToMarkdown {
         const column_list_children = await getBlockChildren(
           this.notionClient,
           id,
-          100
+          100,
         );
 
         let column_list_promise = column_list_children.map(
-          async (column) => await this.blockToMarkdown(column)
+          async (column) => await this.blockToMarkdown(column),
         );
 
         let column_list: string[] = await Promise.all(column_list_promise);
@@ -329,11 +336,11 @@ export class NotionToMarkdown {
         const column_children = await getBlockChildren(
           this.notionClient,
           id,
-          100
+          100,
         );
 
         const column_children_promise = column_children.map(
-          async (column_child) => await this.blockToMarkdown(column_child)
+          async (column_child) => await this.blockToMarkdown(column_child),
         );
 
         let column: string[] = await Promise.all(column_children_promise);
@@ -353,12 +360,12 @@ export class NotionToMarkdown {
         const toggle_children_object = await getBlockChildren(
           this.notionClient,
           id,
-          100
+          100,
         );
 
         // parse children blocks to md object
         const toggle_children = await this.blocksToMarkdown(
-          toggle_children_object
+          toggle_children_object,
         );
 
         // convert children md object to md string
@@ -378,39 +385,40 @@ export class NotionToMarkdown {
         return md.heading3(await this.richText(block.heading_3.rich_text));
       case "bulleted_list_item":
         return md.bullet(
-          await this.richText(block.bulleted_list_item.rich_text)
+          await this.richText(block.bulleted_list_item.rich_text),
         );
       case "numbered_list_item":
         return md.bullet(
           await this.richText(block.numbered_list_item.rich_text),
-          1
+          1,
         );
       case "to_do":
         return md.todo(
           await this.richText(block.to_do.rich_text),
-          block.to_do.checked
+          block.to_do.checked,
         );
       case "code":
         return md.codeBlock(
           plainText(block.code.rich_text),
-          block.code.language
+          block.code.language,
         );
       case "callout":
         const { id, has_children } = block;
         const callout_text = await this.richText(block.callout.rich_text);
-        if (!has_children) return md.callout(callout_text, block.callout.icon);
+        if (!has_children)
+          return md.callout(callout_text, block.callout.icon as CalloutIcon);
 
         let callout_string = "";
 
         const callout_children_object = await getBlockChildren(
           this.notionClient,
           id,
-          100
+          100,
         );
 
         // parse children blocks to md object
         const callout_children = await this.blocksToMarkdown(
-          callout_children_object
+          callout_children_object,
         );
 
         callout_string += `${callout_text}\n`;
@@ -418,7 +426,10 @@ export class NotionToMarkdown {
           callout_string += `${child.parent}\n\n`;
         });
 
-        return md.callout(callout_string.trim(), block.callout.icon);
+        return md.callout(
+          callout_string.trim(),
+          block.callout.icon as CalloutIcon,
+        );
       case "quote":
         const quote_text = await this.richText(block.quote.rich_text);
         if (!block.has_children) return md.quote(quote_text);
@@ -426,10 +437,10 @@ export class NotionToMarkdown {
         const quote_children_object = await getBlockChildren(
           this.notionClient,
           block.id,
-          100
+          100,
         );
         const quote_children = await this.blocksToMarkdown(
-          quote_children_object
+          quote_children_object,
         );
 
         quote_string += `${quote_text}\n`;
