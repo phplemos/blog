@@ -226,12 +226,6 @@
   }
 }
 
-@media (min-width: 900px) {
-  .cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 /* Post Card styling */
 .post-card {
   background-color: var(--dash-card-bg);
@@ -261,7 +255,7 @@
 
 /* Card Header (Featured Image or Emoji) */
 .card-image {
-  height: 150px;
+  height: 120px;
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -269,7 +263,7 @@
 }
 
 .card-emoji-header {
-  height: 130px;
+  height: 100px;
   width: 100%;
   background: linear-gradient(135deg, rgba(21, 101, 192, 0.08), rgba(66, 165, 245, 0.08));
   display: flex;
@@ -283,7 +277,7 @@
 }
 
 .card-emoji {
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
   display: inline-block;
   transition: transform 0.2s ease;
