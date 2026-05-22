@@ -165,44 +165,44 @@ Para fazer qualquer coisa como tomar banho, escovar os dentes e etc, nosso cére
 
 Entender como é a estrutura de um hábito é essencial para você entender como moldar racionalmente seu dia a dia e incrementar em suas rotinas coisas que saudáveis e te agregam valor, como os conceitos do Código Limpo para suas rotinas de desenvolvedor. O autor do livro traz que o hábito é constituído por três partes.
 
-	1. **Gatilho**
+1. **Gatilho**
 
-		O que gera o impulso/energia para executar uma determinada atividade.
+    O que gera o impulso/energia para executar uma determinada atividade.
 
-	1. **Rotina**
+1. **Rotina**
 
-		Conjunto de passos ou tarefas para executar determinada atividade.
+    Conjunto de passos ou tarefas para executar determinada atividade.
 
-	1. **Recompensa**
+1. **Recompensa**
 
-		Produto da final da execução completa da rotina, o que reforça ao cérebro que quando encontrar o gatilho novamente execute aquela rotina para receber recompensa
+    Produto da final da execução completa da rotina, o que reforça ao cérebro que quando encontrar o gatilho novamente execute aquela rotina para receber recompensa
 
 
 Se você observar seu dia a dia há diversas atividades que são hábitos e você nem percebe. Por exemplo, tenho o hábito de tomar banho antes de dormir, essa atividade é tão cotidiana que não sinto esforço em executá-la, vamos observar esse habito na estrutura de gatilho, rotina e recompensa.
 
-	- **Tomar banho antes de dormir:**
-		1. **Gatilho**
-			- Hora se aproximando das 21:30
-		1. **Rotina**
-			- Pegar toalha
-			- Ir ao banheiro
-			- Conferir se os itens de higiene estão no banheiro
-			- Tomar banho
-			- Se Secar com toalha
-			- Ir ao quarto
-			- Me vestir
-			- Ir ao quintal
-			- Estender toalha
-			- Ir para quarto
-		1. **Recompensa**
+- **Tomar banho antes de dormir:**
+    1. **Gatilho**
+        - Hora se aproximando das 21:30
+    1. **Rotina**
+        - Pegar toalha
+        - Ir ao banheiro
+        - Conferir se os itens de higiene estão no banheiro
+        - Tomar banho
+        - Se Secar com toalha
+        - Ir ao quarto
+        - Me vestir
+        - Ir ao quintal
+        - Estender toalha
+        - Ir para quarto
+    1. **Recompensa**
 
-			Dormir confortável e fresco
+        Dormir confortável e fresco
 
 
 No exemplo vemos como há atividades no nosso dia a dia que são hábitos, assim com a programação não seria diferente, as atividades que você faz como desenvolvedor existe uma rotina onde você segue passos para começar a codificar, se você faz a atividade de programar todo dia, você tem hábitos atrelado a atividade de programar. Assim a gente começa a rastrear nosso hábitos como programador, recomendo como exercício pegar uma atividade que você executa ao escrever código e detalhar a rotina até a conclusão dessa atividade. Agora que temos essa visão geral, entendemos que não é simplesmente ler, há um processo de reflexão ao redor desse tema, vamos ver as boas práticas e como exercício sugiro identificar onde em sua as rotinas de programação você pode aplicar as recomendações que vamos ver a seguir. 
 
 
-	> 📢 **Sobre esse tema**
+> 📢 **Sobre esse tema**
 
 
 ## Boas Práticas
@@ -215,73 +215,70 @@ No decorrer dos estudos me deparei com uma aula onde o professor passava por cad
 
 - Revela intenção
 
-	Ao você escrever os nomes das variáveis, métodos e afins, pensar em nomes que demonstram a intenção do que aquilo vai representar dentro do bloco de codigo
+    Ao você escrever os nomes das variáveis, métodos e afins, pensar em nomes que demonstram a intenção do que aquilo vai representar dentro do bloco de codigo
 
 - Revela o porque existe
 
-	O nome deve ser sugestivo e estar claro o porque da existência dele
+    O nome deve ser sugestivo e estar claro o porque da existência dele
 
 - Mostra o que faz
 
-	Mesma ideia do tópico anterior
+    Mesma ideia do tópico anterior
 
 - Pronunciável
 
-	Quando falo pronunciável falo de palavras concretas e não siglas ou acrônimos
+    Quando falo pronunciável falo de palavras concretas e não siglas ou acrônimos
 
 - Evitar mistura de idiomas
 
-	Se você iniciou uma classe em português não tem o porque você misturar para inglês e vice-versa
+    Se você iniciou uma classe em português não tem o porque você misturar para inglês e vice-versa
 
 - Não ser genérico
 
-	So em o nome mostrar o que faz ele já não é genérico, se soar genérico repense sobre o que você está nomeando faz
+    So em o nome mostrar o que faz ele já não é genérico, se soar genérico repense sobre o que você está nomeando faz
 
 - Numero de caracteres por linha ≤ 100
 
-	é isso ai.
+    é isso ai.
 
 
 ### Classes
 
 - Devem ser substantivos
 
-	Esse é legal, deve ter a ideia de que classes são objetos e objetos são substantivos, objetos
+    Esse é legal, deve ter a ideia de que classes são objetos e objetos são substantivos, objetos
 
 - Numero de linhas ≤ 500
 
-	Mesmo role que o numero de linhas por metodo
+    Mesmo role que o numero de linhas por metodo
 
 
 ### Métodos
 
 - Devem conter verbo no infinitivo
 
-	Métodos dão comportamento ao objeto de nossas classes, então ele deve denotar ação, ou seja verbo, aqui no infinitivo, adicionar, visualizar, editar, deletar. 
+    Métodos dão comportamento ao objeto de nossas classes, então ele deve denotar ação, ou seja verbo, aqui no infinitivo, adicionar, visualizar, editar, deletar. 
 
 - Extraia trechos em métodos privados
 
-	Se você tem uma parte grande de código dentro de seu método mas aquela parte faz uma coisa só, você pode extrair esse trecho em método privado e declarar um nome que contemple os requisitos que o _Clean Code _sobre nomes, assim seus métodos ficam fácil de se ler
+    Se você tem uma parte grande de código dentro de seu método mas aquela parte faz uma coisa só, você pode extrair esse trecho em método privado e declarar um nome que contemple os requisitos que o _Clean Code _sobre nomes, assim seus métodos ficam fácil de se ler
 
 - Devem fazer apenas uma coisa
 
-	S do Solid, preciso falar mais nada
+    S do Solid, preciso falar mais nada
 
 - Evitar parâmetros
 
-	DTO’s entram aí, a camada de DTO é um estudo a parte que vou colocar na lista de próximas publicações.
+    DTO’s entram aí, a camada de DTO é um estudo a parte que vou colocar na lista de próximas publicações.
 
 - O método não pode dizer que faz algo e fazer outra coisa nas espreitas
 
-	Isso é sobre como se o nome de seu método é `ProcessarCompra()` e dentro desse método ta processando a compra e disparando email, no nome não diz nada sobre processar email, um nesse exemplo se quiser poderia ser direto `ProcessarCompraComEnvioEmail()`
+    Isso é sobre como se o nome de seu método é `ProcessarCompra()` e dentro desse método ta processando a compra e disparando email, no nome não diz nada sobre processar email, um nesse exemplo se quiser poderia ser direto `ProcessarCompraComEnvioEmail()`
 
 - Quando ler o método ele deve ser congruente e fazer sentido.
-
-	Mais do mesmo
-
 - Numero de linhas ≤ 20
 
-	Mesmo role do numero de caracteres por linha
+    Mesmo role do numero de caracteres por linha
 
 
 ### Comentários

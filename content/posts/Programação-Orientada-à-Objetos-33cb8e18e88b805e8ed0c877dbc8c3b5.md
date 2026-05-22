@@ -272,7 +272,7 @@ Agora vamos entender melhor, nós criamos uma classe pai chamada animal, essa cl
 Após entender sobre classes e como essas classes podem herdar propriedades e comportamentos de outras classes, agora vamos falar de um outro conceito muito importante dentro da POO, o conceito de abstração. Abstração é um dos conceitos que inicialmente mais me confundiu, era difícil conseguir enxergar a aplicação desse conceito, mas a medida que você estuda e começa a ver códigos e projetos você começa a entender melhor. Esse conceito está em volta do que chamamos de “Classe Abstrata” ou  `abstract class`. 
 
 
-	> Beleza entendi, mas me diga oque é uma classe abstrata?  
+> Beleza entendi, mas me diga oque é uma classe abstrata?  
 
 
 Em uma busca simples no google ele me trouxe que: “In object-oriented programming (OOP), an **abstract class** is a restricted class that cannot be used to create objects (you cannot instantiate it directly). To access it, it must be inherited by another class.” Ou seja, uma classe abstrata você não pode usar ela pra criar objetos mas sim pra definir o “contrato” que uma classe vai herda, você não é obrigado a implementar o comportamento, ela é uma classe que apenas pode ser herdada ou seja, apenas a classe que herda essa classe pode instanciar e assim implementar o comportamento esperado dos métodos dessa classe. Vamos ver um exemplo abaixo:

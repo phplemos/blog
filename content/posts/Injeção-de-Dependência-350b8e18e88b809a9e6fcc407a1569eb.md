@@ -140,12 +140,12 @@ Vamos lá, esse post é sobre Injeção de dependência esse conteúdo vai ser m
 Olha, a partir de agora vou pressupor que você já ta conseguindo visualizar a melhor o que é classe, abstração, objeto, contrato pra garantir e ficar até fresco e entender o que vou passar daqui em diante, entendemos classe como um molde de um objeto, abstração a gente cria classes com contratos pre definidos que não são obrigados a ser implementados, apenas os seus filhos tem a obrigação, objeto é uma instancia de uma classe, ou seja, o bolo da forma, o objeto é o resultado de se criar algo usando uma determinada classe e esse processo se chama instanciar, contrato é interface que disponibiliza alguns recursos desde que se cumpra as regras preestabelecidas. Ufa, foi difícil tentar resumir mas foi, então lembra do conceito da inversão de dependência do qual a gente desacopla nossa classe dependendo de um contrato e não de uma classe concreta. Como resultado da aplicação do SOLID, a injeção de dependência é um processo que se torna necessário. 
 
 
-	> Meu parceiro até entendi a questão de dependência e tal, mas me da um exemplo rápido ai ta abstrato demais.
+> Meu parceiro até entendi a questão de dependência e tal, mas me da um exemplo rápido ai ta abstrato demais.
 
 
 Calma filhão, antes de entrarmos na implementação precisamos entender algumas coisas antes. A escrita deste artigo é no decorrer do meu processo de estudo e durante algumas aulas me surgiu um questionamento, foi mais ou menos assim:
 
-	- “Se precisa injetar na hora que for instanciar a classe, em algum lugar precisa ser dito que classe que vai ser injetada, se precisa disso precisa de alguém para gerenciar, se precisa de alguém pra gerenciar pode ser um pacote”.
+- “Se precisa injetar na hora que for instanciar a classe, em algum lugar precisa ser dito que classe que vai ser injetada, se precisa disso precisa de alguém para gerenciar, se precisa de alguém pra gerenciar pode ser um pacote”.
 
 Pois, aí que a gente entra num negocio interessante, o conceito base que você vai ver em todos grandes frameworks, _Dependency Injection Containers._
 
@@ -174,7 +174,7 @@ Quando me pergunto sobre o que é um ciclo de vida, penso em algo que siga o pad
 Pronto, entendemos o cenário agora vamos fazer um paralelo, um ciclo de vida de um objeto pode ser entendido como o tempo de duração de um objeto dentro da aplicação enquanto ela ta em execução, ou seja, enquanto a padaria ta aberta, faz-se bolo, pão, esses itens tem um ciclo de vida que pode ser visto da seguinte forma, produção(Inicio), exposição(Meio) e venda(Fim). Fazendo paralelo à uma aplicação, quando a gente injeta uma dependência em uma classe, nós temos como dizer para o nosso container qual é o ciclo de vida desse objeto, como ele vai se comportar no inicio, meio e fim. Para isso as linguagens de programação que implementam o POO as classes tem métodos responsáveis por definir esses comportamentos, métodos como construtor e destrutor lidam com o comportamento do objeto quando são criadas e encerradas.
 
 
-	> Porra, agora foi que deu o caraio mesmo, peraí, beleza entendi que tem inicio meio e fim, mas o que isso tem a ver com containers e Injeção de Dependência?
+> Porra, agora foi que deu o caraio mesmo, peraí, beleza entendi que tem inicio meio e fim, mas o que isso tem a ver com containers e Injeção de Dependência?
 
 
 É ai que entra o a ideia por traz dos tipos de ciclo de vida meu parceiro, quando você sabe que existem ciclos de vidas diferentes para seu objeto dentro do container, você consegue definir quais dependências vão ser criadas e assim que a classe que usou a dependência terminar você pode excluir o objeto da memoria, ou casos que quando você injetar um objeto de dependência ele seja o mesmo para qualquer objeto que deseje utilizar aquela classe.
@@ -190,12 +190,12 @@ Pronto, entendemos o cenário agora vamos fazer um paralelo, um ciclo de vida de
 
 Um dos conteúdos que vi, trouxe exemplos de tipos de ciclo de vida no .NET, o .NET usa por padrão esses 3 tipos.
 
-	- **Transient:**
-		- Um serviço com um tempo de vida _transitório_ é criado sempre que é solicitado do contêiner de serviço.
-	- **Scoped:**
-		- Para aplicações web, um tempo de vida _com escopo_ indica que os serviços são criados uma vez por solicitação de cliente (conexão).
-	- **Singleton:**
-		- Cada requisição subsequente da implementação do serviço, a partir do contêiner de injeção de dependência, utiliza a mesma instância.
+- **Transient:**
+    - Um serviço com um tempo de vida _transitório_ é criado sempre que é solicitado do contêiner de serviço.
+- **Scoped:**
+    - Para aplicações web, um tempo de vida _com escopo_ indica que os serviços são criados uma vez por solicitação de cliente (conexão).
+- **Singleton:**
+    - Cada requisição subsequente da implementação do serviço, a partir do contêiner de injeção de dependência, utiliza a mesma instância.
 
 Agora a hora boa, hora de fazer paralelo com nosso exemplo da padaria. Em uma padaria existem produtos e cada um com o seu ciclo de vida, por exemplo a produção de pão o tempo de vida dentro da padaria é curto, ou seja, produz, expõe e vende, já uma torta por exemplo é um outro tipo de ciclo de vida, eu sei que pode durar mais tempo, mas pra nossa analogia imagine que essa torta tem o prazo de validade de 24 horas após produzida, ela so existe enquanto a padaria estiver aberta(Aplicação rodando) todo dia dentro do intervalo do expediente, então quando o pessoal fecha a padaria, caso não tenha sido vendida é jogada fora. Nesse exemplo a torta é como um objeto/serviço singleton, e os demais podem variar entre transient e scoped.
 
