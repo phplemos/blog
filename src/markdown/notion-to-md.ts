@@ -76,11 +76,17 @@ export class NotionToMarkdown {
       if (mdBlocks.children && mdBlocks.children.length > 0) {
         if (mdBlocks.type === "synced_block") {
           mdString += this.toMarkdownString(mdBlocks.children, nestingLevel);
-        } else {
+        } else if (
+          mdBlocks.type === "bulleted_list_item" ||
+          mdBlocks.type === "numbered_list_item" ||
+          mdBlocks.type === "to_do"
+        ) {
           mdString += this.toMarkdownString(
             mdBlocks.children,
             nestingLevel + 1,
           );
+        } else {
+          mdString += this.toMarkdownString(mdBlocks.children, nestingLevel);
         }
       }
     });
