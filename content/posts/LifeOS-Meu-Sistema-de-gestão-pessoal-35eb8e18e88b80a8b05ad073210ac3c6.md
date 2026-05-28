@@ -1,7 +1,7 @@
 ---
 title: "LifeOS - Meu Sistema de gestão pessoal"
 date: "2026-05-12T15:17:00.000Z"
-lastmod: "2026-05-19T20:18:00.000Z"
+lastmod: "2026-05-27T21:27:00.000Z"
 draft: true
 series: []
 Status: "Not started"
@@ -13,7 +13,7 @@ NOTION_METADATA:
   object: "page"
   id: "35eb8e18-e88b-80a8-b05a-d073210ac3c6"
   created_time: "2026-05-12T15:17:00.000Z"
-  last_edited_time: "2026-05-19T20:18:00.000Z"
+  last_edited_time: "2026-05-27T21:27:00.000Z"
   created_by:
     object: "user"
     id: "7139b64c-7267-446b-aa5a-5024eba8323f"
@@ -36,6 +36,10 @@ NOTION_METADATA:
       id: "B%3C%3FS"
       type: "multi_select"
       multi_select: []
+    Created time:
+      id: "BzcA"
+      type: "created_time"
+      created_time: "2026-05-12T15:17:00.000Z"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -74,7 +78,7 @@ NOTION_METADATA:
     Last edited time:
       id: "vbGE"
       type: "last_edited_time"
-      last_edited_time: "2026-05-19T20:18:00.000Z"
+      last_edited_time: "2026-05-27T21:27:00.000Z"
     summary:
       id: "x%3AlD"
       type: "rich_text"
@@ -139,6 +143,9 @@ Meu intuito com esse artigo é trazer como foi o processo de organizar parte da 
 
 
 # Modelagem do problema
+
+
+No decorrer da minha vida eu sempre deixei essa questão de organização pra la e sempre vivi um dia após o outros, sem me planejar e organizar, hoje com meu conhecimento percebo
 
 
 ## Entendendo o problema
