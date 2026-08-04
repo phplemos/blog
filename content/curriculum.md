@@ -55,7 +55,7 @@ title: "Curriculum Vitae"
 
 * **B.S. in Computer Science**  
   *Universidade Estadual do Sudoeste da Bahia (UESB)*, Jequié, Brazil.
-* **Technical High School in IT & Management** (2013 - 2016)  
+* **Technical High School in IT & Management**  
   *Centro Estadual de Educação Profissional em Gestão e Tecnologia da Informação (CEEP Regis Pacheco), Jequié, Brazil.
 
 ### **Complementary Education**
