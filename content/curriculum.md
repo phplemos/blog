@@ -5,7 +5,7 @@ title: "Curriculum Vitae"
 # Pedro Henrique Pinheiro Lemos
 
 **Location:** Jequié, BA, Brazil  
-**Email:** [phplemos.dev@gmail.com](mailto:phplemos.dev@gmail.com) | [phplemos.dev@proton.me](mailto:phplemos.dev@proton.me)  
+**Email:** [phplemos.dev@proton.me](mailto:phplemos.dev@proton.me)  
 **GitHub:** [github.com/phplemos](https://github.com/phplemos)  
 **LinkedIn:** [linkedin.com/in/phplemos](https://www.linkedin.com/in/phplemos)  
 **Lattes ID:** [3635593609913235](http://lattes.cnpq.br/3635593609913235)
@@ -16,15 +16,15 @@ title: "Curriculum Vitae"
 
 ### **CEPEDI** *(Centro de Pesquisa Desenvolvimento Tecnológico e Inovação)*
 
-#### **Fullstack Mobile Developer - Intern** *(2026 - Present)*
+#### **Fullstack Developer** *(2026 - Present)*
 
-*Currently working in full-stack mobile development.*
+*Currently working in full-stack development.*
 
 #### **Mobile Developer - RESTIC36** *(2025 - 2025)*
 
 *Joined CEPEDI through the RESTIC36 training program, passing the selection test for the React Native mobile development track. Participated in an innovation project for a multinational POS card terminal company, covering ideation, development, and final product delivery.*
 
-* **Technologies:** React Native, Expo, proprietary Android SDKs for hardware integration, React state management.
+* **Technologies:** React Native, Expo, Java/Kotlin proprietary Android SDKs for hardware integration, React state management.
 * **Key Responsibilities:**
     - Built native modules integrated with client-specific SDKs.
     - Developed accessible applications tailored to specific audiences, including screen readers.
@@ -35,7 +35,7 @@ title: "Curriculum Vitae"
 
 ### **Universidade Estadual do Sudoeste da Bahia (UESB)**
 
-#### **Fullstack Developer - Fábrica de Software** *(2025 - 2026)*
+#### **Fullstack Developer - Fábrica de Software** *(2024 - 2025)*
 
 *Developed and maintained software systems with a strong focus on technology stack modernization and infrastructure optimization.*
 
@@ -53,14 +53,14 @@ title: "Curriculum Vitae"
 
 ### **Formal Education**
 
-* **B.S. in Computer Science** (Graduation: 2021)  
+* **B.S. in Computer Science**  
   *Universidade Estadual do Sudoeste da Bahia (UESB)*, Jequié, Brazil.
 * **Technical High School in IT & Management** (2013 - 2016)  
   *Centro Estadual de Educação Profissional em Gestão e Tecnologia da Informação (CEEP Regis Pacheco), Jequié, Brazil.
 
 ### **Complementary Education**
 
-* **TIC 36 Residency Capacity Building Program** (560 hours, 2024)  
+* **TIC 36 Residency Capacity Building Program** 
   *CEPEDI (Centro de Pesquisa Desenvolvimento Tecnológico e Inovação)*, Ilhéus, Brazi
   l. *Focus:* Entrepreneurship, Bahia, and Technology.
 
@@ -68,7 +68,7 @@ title: "Curriculum Vitae"
 
 ## 📜 Software Registrations (INPI Patents)
 
-1. **UniEspaços - Academic Space Management Platform** *(2025)*
+1. **UniEspaços - Academic Space Management Platform**
 
    * **Registry Institution:** INPI (*Instituto Nacional da Propriedade Industrial*)
    * **Registration Number:** BR51202500645-1 (Filed/Granted: 09/12/2025)
@@ -85,10 +85,9 @@ title: "Curriculum Vitae"
 
 ## 🛠️ Areas of Expertise
 
-* **Core Areas:** Exact and Earth Sciences -> Computer Science -> Computer Systems.
-* **Backend:** PHP/Laravel, Node.js.
-* **Frontend:** React.js, Inertia.js, Tailwind CSS, Blade.
-* **Mobile:** React Native, Expo, Android SDK.
+* **Backend:** Java/Kotlin, Node.js, PHP/Laravel.
+* **Frontend:** React.js, TanStack, Tailwind CSS, Blade.
+* **Mobile:** React Native, Expo, Java/Kotlin, Android SDK.
 * **DevOps & Infrastructure:** Docker, Gitflow, Linux (Arch Linux), Bash/Shell scripting.
 * **Databases:** PostgreSQL, MySQL, MongoDB.
 
