@@ -40,7 +40,7 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
 
       - name: Commit updated content
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Sync content with Notion
 
