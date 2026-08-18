@@ -4,7 +4,7 @@
 
 Notion-Hugo allows you to use [Notion](https://www.notion.so/) as your CMS and deploy your pages as a static website with [Hugo](https://gohugo.io/). So you have the full power of Notion for creating new content, with Hugo and its wonderful [ecosystem of themes](https://themes.gohugo.io/) take care of the rest for you.
 
-Notion-Hugo deploys your website to Cloudflare Pages, which has a generous free tier and is easy to set up. Notion-Hugo also uses [Functions](https://developers.cloudflare.com/pages/functions/) and [KV](https://developers.cloudflare.com/kv/) to power your website. Register a [Cloudflare account](https://dash.cloudflare.com/sign-up) and be ready to go.
+This repository deploys automatically to **GitHub Pages** via GitHub Actions — no external hosting account is required. It also carries a Cloudflare Pages Function (`functions/api.ts`) that uses [Functions](https://developers.cloudflare.com/pages/functions/) and [KV](https://developers.cloudflare.com/kv/) to proxy and cache Notion asset URLs; that piece only runs if you additionally deploy this repo to Cloudflare Pages (see the note at the end of the deploy section below) — it is not required for the GitHub Pages deployment to work.
 
 ## Get Started
 
@@ -106,66 +106,28 @@ Click the commit changes button at the bottom to save the file.
 <img width="779" alt="Commit changes" src="https://user-images.githubusercontent.com/52968553/188318414-b45d159c-274a-47e6-9ff6-b01f4e05379c.png">
 </picture>
 
-### Deploy to Cloudflare Pages
+### Deploy to GitHub Pages
 
-Navigate to the [Cloudflare Pages](https://dash.cloudflare.com/pages) dashboard, click the **Workers & Pages** tab on the left, then click the **Create** button, then select the **Pages** tab, and click the **Connect to Git** button. Choose Notion-Hugo from the repository list, then click the **Begin Setup** button.
+Deployment is automatic and requires no external hosting account. The [`Deploy to GitHub Pages`](.github/workflows/deploy-gh-pages.yml) workflow runs on every push to `main` (and can be triggered manually from the **Actions** tab): it syncs content from Notion, commits any changes, builds the site with `hugo --gc --minify`, and publishes the result via `actions/deploy-pages@v5`.
 
-<picture>
-<source media="(prefers-color-scheme: light)" width="2559" srcset="https://github.com/user-attachments/assets/ca5ce9fe-09a9-439f-bd94-ead08c340874">
-<source media="(prefers-color-scheme: dark)" width="2559" srcset="https://github.com/user-attachments/assets/38a00d38-0ee4-45eb-ba77-5690e0e48049">
-<img width="2559" alt="Edit the file on GitHub" src="https://github.com/user-attachments/assets/ca5ce9fe-09a9-439f-bd94-ead08c340874">
-</picture>
+To enable it on your own copy of this repo:
 
-Fill in the build settings as follows:
+1. Make sure the `NOTION_TOKEN` repository secret is set (see the [Setup secrets for GitHub Action](#setup-secrets-for-github-action) step above).
+2. In your repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+3. Push to `main` (or run the workflow manually). Your site will be published at `https://<your-github-username>.github.io/<repo-name>/`, or at a custom domain if you configure one (see below).
+4. Update `baseURL` in [`config/_default/config.toml`](config/_default/config.toml) and `base_url` in [`notion-hugo.config.ts`](notion-hugo.config.ts) to match your site's URL.
 
-- Build command: `npm install; npm start; hugo`
-- Build output directory: `public`
-- Environment variables:
-  - `HUGO_VERSION`: `0.140.0` (fill in the latest version of Hugo that you can find [here](https://github.com/gohugoio/hugo/releases))
-  - `NODE_VERSION`: `22.12.0` (fill in the latest version of Node.js that you can find [here](https://nodejs.org/en/download))
-  - `NOTION_TOKEN`: `secret_token` (fill in the token you copied from the Notion integration)
-
-Click the **Save and Deploy** button to deploy your website.
-
-<picture>
-<source media="(prefers-color-scheme: light)" width="2559" srcset="https://github.com/user-attachments/assets/a84d6b89-2d8f-4bae-adcb-b3d9d05a076b">
-<source media="(prefers-color-scheme: dark)" width="2559" srcset="https://github.com/user-attachments/assets/91e8d47c-3dbc-4b0e-86f8-3fc0d5151c23">
-<img width="2559" alt="Edit the file on GitHub" src="https://github.com/user-attachments/assets/a84d6b89-2d8f-4bae-adcb-b3d9d05a076b">
-</picture>
-
-Now we need to add a KV namespace for the Cloudflare Functions. Navigate to the **Storage & Database** tab on the left, then click the **KV** tab, then click the **+ Create** button to create a new namespace. You can name it whatever you like.
-
-<picture>
-<source media="(prefers-color-scheme: light)" width="2559" srcset="https://github.com/user-attachments/assets/7d56b453-8053-4296-b0eb-1a8df2146cc6">
-<source media="(prefers-color-scheme: dark)" width="2559" srcset="https://github.com/user-attachments/assets/d432ce02-9527-4662-8360-21c0922cca64">
-<img width="2559" alt="Edit the file on GitHub" src="https://github.com/user-attachments/assets/7d56b453-8053-4296-b0eb-1a8df2146cc6">
-</picture>
-
-Now, navigate to **Workers & Pages** > **your_project** > **Settings** > **Bindings**, add a new **KV Namespace** binding, with **Variable name** set to `KV` and the **KV namespace** set to the namespace you just created. Click the **Save** button to save the changes.
-
-<picture>
-<source media="(prefers-color-scheme: light)" width="2559" srcset="https://github.com/user-attachments/assets/6664cee5-02af-40e8-911f-1a82be185e8f">
-<source media="(prefers-color-scheme: dark)" width="2559" srcset="https://github.com/user-attachments/assets/68befd19-b169-413a-9c4f-46cf5de5c830">
-<img width="2559" alt="Edit the file on GitHub" src="https://github.com/user-attachments/assets/6664cee5-02af-40e8-911f-1a82be185e8f">
-</picture>
-
-Finally, we need to configure the baseURL. Visit the **Deployments** tab to check the domain of your website (in this case, it is `https://notion-hugo-example.pages.dev`). 
-
-<picture>
-<source media="(prefers-color-scheme: light)" width="2559" srcset="https://github.com/user-attachments/assets/52ed73d6-db6c-45ac-a238-d0d50908dba2">
-<source media="(prefers-color-scheme: dark)" width="2559" srcset="https://github.com/user-attachments/assets/31f8b30b-c997-4ec6-8cc5-3075d15867be">
-<img width="2559" alt="Edit the file on GitHub" src="https://github.com/user-attachments/assets/52ed73d6-db6c-45ac-a238-d0d50908dba2">
-</picture>
-
-Navigate back to your GitHub repository, change the `base_url` in [`notion-hugo.config.ts`](https://github.com/HEIGE-PCloud/Notion-Hugo/blob/main/notion-hugo.config.ts) to the domain of your website. Also update the `baseURL` in [`config/_default/config.toml`](https://github.com/HEIGE-PCloud/Notion-Hugo/blob/main/config/_default/config.toml) to this value. Click the commit changes button at the bottom to save the file.
-
-Congratulations! Your website is now live at the domain you just configured.
+Congratulations! Your website will now redeploy automatically whenever you push to `main` or whenever the scheduled Notion sync (see the FAQ below) picks up new content.
 
 ### Next steps
 
 Pick a [Hugo theme](https://themes.gohugo.io/) you like, and add it to your repository. You can customize the theme to your liking.
 
-Use a custom domain for your website. You can add a custom domain in the Cloudflare Pages dashboard. See the [Cloudflare documentation](https://developers.cloudflare.com/pages/configuration/custom-domains/) for more information. The baseURL needs to be updated after changing the domain.
+Use a custom domain for your website by adding a `CNAME` file to `static/` with your domain, and configuring the custom domain in your repository's **Settings → Pages**. The `baseURL` needs to be updated after changing the domain.
+
+### Optional: Cloudflare Pages Function for Notion asset caching
+
+`functions/api.ts` is a Cloudflare Pages Function that proxies and caches Notion-hosted file/cover-image URLs (which expire) through a Cloudflare KV namespace. This only runs if you deploy this repository to [Cloudflare Pages](https://developers.cloudflare.com/pages/) in addition to (or instead of) GitHub Pages — it is unused by the GitHub Pages deployment above. To enable it, connect the repo in the Cloudflare Pages dashboard with build command `npm install; npm start; hugo`, output directory `public`, environment variables `HUGO_VERSION`, `NODE_VERSION`, and `NOTION_TOKEN`, and add a KV namespace binding named `KV` under **Settings → Bindings**.
 
 ## FAQ
 

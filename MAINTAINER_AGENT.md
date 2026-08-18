@@ -31,7 +31,6 @@ graph TD
 1. **Configuration**:
    - `notion-hugo.config.ts`: Defines where pages and databases are mounted. Currently targets the database ID `b7b1816c05ec464391c8c111fa242985` and parent page ID `45eb121158b9489480ec000fd25c812b` under `https://www.notion.so/phplemos-dev/PHPLEMOS-Blog-6c7b8e18e88b8226948b81a8a160da54`.
    - `config/_default/config.toml`: Current active Hugo website configuration, setting the theme to `hugo-coder`.
-   - `config/DoIt/`: Legacy theme configs for the `DoIt` theme.
 
 2. **Sync Logic (`src/`)**:
    - `src/index.ts`: The main CLI runner. Orchestrates Notion Client queries, database page parsing, and deleting files locally that are no longer present in Notion.

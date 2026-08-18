@@ -23,9 +23,9 @@ unsafe = true
     description = "A place to test my awareness about some areas of Computer Science and share my ideas."
     keywords = "blog,personal,technology,programming,software development,linux,open source"
     info = ["Software Engineer", "I use arch btw :|", "One thing is one thing, another thing is another thing","Oxe?!, baiano can speak other language??"]
-    avatarURL = "images/phplemos.png"
+    avatarURL = "images/phplemos.webp"
     dateFormat = "2 de January, 2006"
-    since = 2026 # Assuming the blog started recently
+    since = 2026
     colorScheme = "auto"
     hideColorSchemeToggle = false
     maxSeeAlsoItems = 5
@@ -35,13 +35,13 @@ unsafe = true
 name = "Github"
 icon = "fa-brands fa-github fa-2x"
 weight = 1
-url = "https://github.com/phplemos/" # Placeholder, user should update
+url = "https://github.com/phplemos/"
 
 [[params.social]]
 name = "LinkedIn"
 icon = "fa-brands fa-linkedin fa-2x"
 weight = 4
-url = "https://www.linkedin.com/in/phplemos/" # Placeholder, user should update
+url = "https://www.linkedin.com/in/phplemos/"
 
 [taxonomies]
 category = "categories"
