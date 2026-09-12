@@ -17,11 +17,13 @@
       <div class="search-wrapper">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
         <input type="text" id="search-input" placeholder="Search posts by title, description, or tag..." autocomplete="off">
+        <input type="text" id="search-input" placeholder="{{ i18n "search_placeholder" | default "Search posts by title, description, or tag..." }}" autocomplete="off">
       </div>
       
       <!-- Sort Select -->
       <div class="sort-wrapper">
         <label for="sort-select">Sort by:</label>
+        <label for="sort-select">{{ i18n "sort_by" | default "Sort by:" }}</label>
         <div class="select-container">
           <select id="sort-select">
             <option value="date-desc">Date: Newest First</option>
@@ -30,6 +32,12 @@
             <option value="title-desc">Title: Z-A</option>
             <option value="reading-desc">Reading Time: Longest</option>
             <option value="reading-asc">Reading Time: Shortest</option>
+            <option value="date-desc">{{ i18n "sort_date_desc" | default "Date: Newest First" }}</option>
+            <option value="date-asc">{{ i18n "sort_date_asc" | default "Date: Oldest First" }}</option>
+            <option value="title-asc">{{ i18n "sort_title_asc" | default "Title: A-Z" }}</option>
+            <option value="title-desc">{{ i18n "sort_title_desc" | default "Title: Z-A" }}</option>
+            <option value="reading-desc">{{ i18n "sort_reading_desc" | default "Reading Time: Longest" }}</option>
+            <option value="reading-asc">{{ i18n "sort_reading_asc" | default "Reading Time: Shortest" }}</option>
           </select>
         </div>
       </div>
@@ -38,8 +46,10 @@
     <!-- TAG FILTERS -->
     <div class="tags-filter-wrapper">
       <span class="tags-label">Filter by Tag:</span>
+      <span class="tags-label">{{ i18n "filter_by_tag" | default "Filter by Tag:" }}</span>
       <div class="tags-list-container" id="tags-filter-list">
         <button class="tag-btn active" data-tag="all">All</button>
+        <button class="tag-btn active" data-tag="all">{{ i18n "tag_all" | default "All" }}</button>
         <!-- Dynamic tags rendering via Hugo -->
         {{ $allTags := slice }}
         {{ range .RegularPages }}
@@ -106,6 +116,7 @@
             <span class="card-reading-time">
               <i class="fa-solid fa-clock" aria-hidden="true"></i>
               {{ $readingTime }} min read
+              {{ $readingTime }} {{ i18n "min_read" | default "min read" }}
             </span>
           </div>
           
@@ -142,6 +153,7 @@
   <!-- Empty State Message -->
   <div class="no-posts-message" id="no-posts-msg" style="display: none;">
     <p>No posts match your filters. Try search something else or clearing the filters!</p>
+    <p>{{ i18n "no_posts_match" | default "No posts match your filters. Try search something else or clearing the filters!" }}</p>
   </div>
 </section>
 

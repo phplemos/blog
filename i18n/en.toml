@@ -1,0 +1,42 @@
+[search_placeholder]
+other = "Search posts by title, description, or tag..."
+
+[sort_by]
+other = "Sort by:"
+
+[sort_date_desc]
+other = "Date: Newest First"
+
+[sort_date_asc]
+other = "Date: Oldest First"
+
+[sort_title_asc]
+other = "Title: A-Z"
+
+[sort_title_desc]
+other = "Title: Z-A"
+
+[sort_reading_desc]
+other = "Reading Time: Longest"
+
+[sort_reading_asc]
+other = "Reading Time: Shortest"
+
+[filter_by_tag]
+other = "Filter by Tag:"
+
+[tag_all]
+other = "All"
+
+[min_read]
+other = "min read"
+
+[no_posts_match]
+other = "No posts match your filters. Try searching for something else or clearing the filters!"
+
+[footer_built_with]
+other = "Built with"
+
+[footer_and]
+other = "and maintained by"
+

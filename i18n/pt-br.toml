@@ -1,0 +1,42 @@
+[search_placeholder]
+other = "Buscar artigos por título, descrição ou tag..."
+
+[sort_by]
+other = "Ordenar por:"
+
+[sort_date_desc]
+other = "Data: Mais recentes"
+
+[sort_date_asc]
+other = "Data: Mais antigos"
+
+[sort_title_asc]
+other = "Título: A-Z"
+
+[sort_title_desc]
+other = "Título: Z-A"
+
+[sort_reading_desc]
+other = "Tempo de leitura: Mais longo"
+
+[sort_reading_asc]
+other = "Tempo de leitura: Mais curto"
+
+[filter_by_tag]
+other = "Filtrar por Tag:"
+
+[tag_all]
+other = "Todas"
+
+[min_read]
+other = "min de leitura"
+
+[no_posts_match]
+other = "Nenhum artigo encontrado para os filtros selecionados. Tente outra busca ou limpe os filtros!"
+
+[footer_built_with]
+other = "Criado com"
+
+[footer_and]
+other = "e mantido por"
+

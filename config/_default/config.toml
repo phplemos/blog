@@ -5,6 +5,8 @@ theme = "hugo-coder"
 languageCode = "en"
 defaultContentLanguage = "en"
 dateFormat = "01-01-2026"
+defaultContentLanguage = "pt-br"
+defaultContentLanguageInSubdir = false
 enableEmoji = true
 
 [pagination]
@@ -23,6 +25,8 @@ unsafe = true
     description = "A place to test my awareness about some areas of Computer Science and share my ideas."
     keywords = "blog,personal,technology,programming,software development,linux,open source"
     info = ["Software Engineer", "I use arch btw :|", "One thing is one thing, another thing is another thing","Oxe?!, baiano can speak other language??"]
+    description = "Espaço para compartilhar experiências, arquitetura de software e tecnologia."
+    keywords = "blog,personal,technology,programming,software development,linux,open source,software architecture"
     avatarURL = "images/phplemos.webp"
     dateFormat = "2 de January, 2006"
     since = 2026
@@ -41,6 +45,7 @@ url = "https://github.com/phplemos/"
 name = "LinkedIn"
 icon = "fa-brands fa-linkedin fa-2x"
 weight = 4
+weight = 2
 url = "https://www.linkedin.com/in/phplemos/"
 
 [taxonomies]
@@ -51,28 +56,101 @@ author = "authors"
 
 [languages.en]
 languageName = ":uk:"
+[languages]
+  [languages.pt-br]
+    locale = "pt-br"
+    label = "🇧🇷 PT"
+    languageCode = "pt-br"
+    languageName = "🇧🇷 PT"
+    weight = 1
+    title = "Pedro Pinheiro"
 
 [[languages.en.menu.main]]
 name = "About"
 weight = 1
 url = "about/"
+    [languages.pt-br.params]
+      author = "Pedro Henrique Pinheiro Lemos"
+      info = ["Engenheiro de Software Fullstack", "I use arch btw :|", "One thing is one thing, another thing is another thing", "Resolvendo problemas reais"]
+      description = "Espaço para compartilhar experiências, arquitetura de software e tecnologia."
+      dateFormat = "2 de January, 2006"
 
 [[languages.en.menu.main]]
 name = "Blog"
 weight = 2
 url = "posts/"
+    [[languages.pt-br.menu.main]]
+    name = "Sobre"
+    weight = 1
+    url = "about/"
 
 [[languages.en.menu.main]]
 name = "Projects"
 weight = 3
 url = "projects/"
+    [[languages.pt-br.menu.main]]
+    name = "Blog"
+    weight = 2
+    url = "posts/"
 
 [[languages.en.menu.main]]
 name = "Curriculum Vitae"
 weight = 4
 url = "curriculum/"
+    [[languages.pt-br.menu.main]]
+    name = "Projetos"
+    weight = 3
+    url = "projects/"
 
 [[languages.en.menu.main]]
 name = "Contact me"
 weight = 5
 url = "contact/"
+    [[languages.pt-br.menu.main]]
+    name = "Currículo"
+    weight = 4
+    url = "curriculum/"
+
+    [[languages.pt-br.menu.main]]
+    name = "Contato"
+    weight = 5
+    url = "contact/"
+
+  [languages.en]
+    locale = "en"
+    label = "🇺🇸 EN"
+    languageCode = "en"
+    languageName = "🇺🇸 EN"
+    weight = 2
+    title = "Pedro Pinheiro"
+
+    [languages.en.params]
+      author = "Pedro Henrique Pinheiro Lemos"
+      info = ["Fullstack Software Engineer", "I use arch btw :|", "One thing is one thing, another thing is another thing", "Solving real-world problems"]
+      description = "A space to share experiences, software architecture insights, and technology."
+      dateFormat = "January 2, 2006"
+
+    [[languages.en.menu.main]]
+    name = "About"
+    weight = 1
+    url = "about/"
+
+    [[languages.en.menu.main]]
+    name = "Blog"
+    weight = 2
+    url = "posts/"
+
+    [[languages.en.menu.main]]
+    name = "Projects"
+    weight = 3
+    url = "projects/"
+
+    [[languages.en.menu.main]]
+    name = "Curriculum"
+    weight = 4
+    url = "curriculum/"
+
+    [[languages.en.menu.main]]
+    name = "Contact"
+    weight = 5
+    url = "contact/"

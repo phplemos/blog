@@ -8,5 +8,6 @@
     {{ with .Site.Params.author }} {{ . }} {{ end }}
     ·
     Criado por <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a> e melhorado por <a href="https://github.com/phplemos" target="_blank" rel="noopener">phplemos</a>.
+    {{ i18n "footer_built_with" | default "Criado com" }} <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/" target="_blank" rel="noopener">Coder</a> {{ i18n "footer_and" | default "e mantido por" }} <a href="https://github.com/phplemos" target="_blank" rel="noopener">phplemos</a>.
   </section>
 </footer>

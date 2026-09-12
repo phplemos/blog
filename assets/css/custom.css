@@ -381,3 +381,104 @@
   font-size: 1.6rem;
   margin: 0;
 }
+
+/* ==========================================================================
+   LANGUAGE SWITCHER BADGE / PILL
+   ========================================================================== */
+
+.navigation-list .lang-switch-item {
+  margin-left: 0.5rem;
+}
+
+.lang-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  background-color: var(--dash-tag-bg, #f0f0f0);
+  color: var(--dash-tag-color, #333333);
+  border: 1px solid var(--dash-card-border, #e0e0e0);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.lang-switch-btn:hover {
+  background-color: var(--dash-tag-active-bg, #1565c0);
+  color: #ffffff;
+  border-color: var(--dash-tag-active-bg, #1565c0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(21, 101, 192, 0.25);
+  text-decoration: none;
+}
+
+.colorscheme-dark .lang-switch-btn {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+  border-color: #404040;
+}
+
+.colorscheme-dark .lang-switch-btn:hover {
+  background-color: #42a5f5;
+  color: #121212;
+  border-color: #42a5f5;
+  box-shadow: 0 4px 10px rgba(66, 165, 245, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .colorscheme-auto .lang-switch-btn {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border-color: #404040;
+  }
+  .colorscheme-auto .lang-switch-btn:hover {
+    background-color: #42a5f5;
+    color: #121212;
+    border-color: #42a5f5;
+    box-shadow: 0 4px 10px rgba(66, 165, 245, 0.3);
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & CONTENT REFINEMENTS
+   ========================================================================== */
+
+/* Modern line wrapping */
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+p, blockquote, li, .card-summary {
+  text-wrap: pretty;
+}
+
+/* Content blockquote styling */
+.content blockquote {
+  border-left: 4px solid var(--dash-tag-active-bg, #1565c0);
+  background-color: rgba(21, 101, 192, 0.04);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+.colorscheme-dark .content blockquote {
+  border-left-color: #42a5f5;
+  background-color: rgba(66, 165, 245, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  .colorscheme-auto .content blockquote {
+    border-left-color: #42a5f5;
+    background-color: rgba(66, 165, 245, 0.06);
+  }
+}
+
+/* Smooth transition for navigation links */
+.navigation-link {
+  transition: color 0.15s ease;
+}
