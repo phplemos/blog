@@ -9,7 +9,7 @@ Fique à vontade para entrar em contato comigo! Seja para bater um papo sobre de
 
 ### 📬 Canais Diretos
 
-- **E-mail Principal:** [phplemos.dev@proton.me](mailto:phplemos.dev@proton.me)
+- **E-mail Principal:** [professional@phplemos.dev](mailto:professional@phplemos.dev)
 - **LinkedIn:** [linkedin.com/in/phplemos](https://www.linkedin.com/in/phplemos) — O melhor canal para conexões profissionais e oportunidades.
 - **GitHub:** [github.com/phplemos](https://github.com/phplemos) — Explore meus repositórios, contribuições e projetos de código aberto.
 

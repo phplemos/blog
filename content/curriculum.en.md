@@ -6,7 +6,7 @@ slug: "curriculum"
 # Pedro Henrique Pinheiro Lemos
 
 **Location:** Jequié, BA, Brazil  
-**Email:** [phplemos.dev@proton.me](mailto:phplemos.dev@proton.me)  
+**Email:** [professional@phplemos.dev](mailto:professional@phplemos.dev)  
 **GitHub:** [github.com/phplemos](https://github.com/phplemos)  
 **LinkedIn:** [linkedin.com/in/phplemos](https://www.linkedin.com/in/phplemos)  
 **Lattes Curriculum:** [3635593609913235](http://lattes.cnpq.br/3635593609913235)

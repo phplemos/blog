@@ -9,7 +9,7 @@ Feel free to get in touch! Whether you'd like to talk about software engineering
 
 ### 📬 Direct Channels
 
-- **Primary Email:** [phplemos.dev@proton.me](mailto:phplemos.dev@proton.me)
+- **Primary Email:** [professional@phplemos.dev](mailto:professional@phplemos.dev)
 - **LinkedIn:** [linkedin.com/in/phplemos](https://www.linkedin.com/in/phplemos) — Best channel for professional networking and career inquiries.
 - **GitHub:** [github.com/phplemos](https://github.com/phplemos) — Explore my repositories, contributions, and open-source projects.
 
