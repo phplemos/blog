@@ -1,0 +1,24 @@
+{{- /*
+  Files uploaded to Notion are downloaded by the sync into static/notion.
+  Hand-written pages, such as translations, can reference them by block id
+  alone (/notion/<block-id>), since the extension is only known once the
+  sync has downloaded the file.
+*/ -}}
+{{- $src := .Destination -}}
+{{- if and (hasPrefix $src "/notion/") (not (path.Ext $src)) -}}
+  {{- $id := path.Base $src -}}
+  {{- $found := false -}}
+  {{- if os.FileExists "static/notion" -}}
+    {{- range os.ReadDir "static/notion" -}}
+      {{- if eq (path.BaseName .Name) $id -}}
+        {{- $src = printf "/notion/%s" .Name -}}
+        {{- $found = true -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if not $found -}}
+    {{- warnf "%s: %s has not been downloaded yet, run the Notion sync (npm start)" .Page.File.Path .Destination -}}
+  {{- end -}}
+{{- end -}}
+<img src="{{ $src }}" alt="{{ .PlainText }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy" decoding="async">
+{{- /* chomp trailing newline */ -}}

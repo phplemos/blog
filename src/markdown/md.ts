@@ -1,31 +1,16 @@
 import { markdownTable } from "markdown-table";
 import {
-  AudioBlockObjectResponse,
   EquationRichTextItemResponse,
   MentionRichTextItemResponse,
-  PdfBlockObjectResponse,
   RichTextItemResponse,
   RichTextItemResponseCommon,
   TextRichTextItemResponse,
-  VideoBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import { CalloutIcon } from "./types";
 import { getPageRelrefFromId } from "./notion";
 import { Client } from "@notionhq/client";
 export const inlineCode = (text: string) => {
   return `\`${text}\``;
-};
-
-export const bold = (text: string) => {
-  return `**${text}**`;
-};
-
-export const italic = (text: string) => {
-  return `_${text}_`;
-};
-
-export const strikethrough = (text: string) => {
-  return `~~${text}~~`;
 };
 
 export const underline = (text: string) => {
@@ -127,30 +112,45 @@ export const equation = (expression: string) => {
   return `\\[${expression}\\]`;
 };
 
+/**
+ * Renders a text item without its emphasis (bold, italic, strikethrough),
+ * which richText applies across adjacent items.
+ */
 function textRichText(
   text: RichTextItemResponseCommon & TextRichTextItemResponse,
 ): string {
-  const annotations = text.annotations;
-  let content = text.text.content;
-  if (annotations.bold) {
-    content = bold(content);
-  }
-  if (annotations.code) {
+  const [, leading, core, trailing] = splitWhitespace(text.text.content);
+  if (!core) return text.text.content;
+  let content = core;
+  if (text.annotations.code) {
     content = inlineCode(content);
   }
-  if (annotations.italic) {
-    content = italic(content);
-  }
-  if (annotations.strikethrough) {
-    content = strikethrough(content);
-  }
-  if (annotations.underline) {
+  if (text.annotations.underline) {
     content = underline(content);
   }
   if (text.href) {
     content = link(content, text.href);
   }
-  return content;
+  return leading + content + trailing;
+}
+
+function emphasisMarkers(
+  annotations: RichTextItemResponseCommon["annotations"],
+): string[] {
+  const markers: string[] = [];
+  if (annotations.bold) markers.push("**");
+  if (annotations.italic) markers.push("*");
+  if (annotations.strikethrough) markers.push("~~");
+  return markers;
+}
+
+function splitWhitespace(text: string): [string, string, string, string] {
+  return text.match(/^(\s*)([\s\S]*?)(\s*)$/) as unknown as [
+    string,
+    string,
+    string,
+    string,
+  ];
 }
 
 /**
@@ -209,38 +209,87 @@ async function mentionRichText(
   return "";
 }
 
+async function richTextItem(
+  text: RichTextItemResponse,
+  notion: Client,
+): Promise<string> {
+  if (text.type === "text") {
+    return textRichText(text);
+  } else if (text.type === "equation") {
+    return equationRichText(text);
+  } else if (text.type === "mention") {
+    return await mentionRichText(text, notion);
+  }
+  return "";
+}
+
 export async function richText(
   textArray: RichTextItemResponse[],
   notion: Client,
 ) {
-  return (
-    await Promise.all(
-      textArray.map(async (text) => {
-        if (text.type === "text") {
-          return textRichText(text);
-        } else if (text.type === "equation") {
-          return equationRichText(text);
-        } else if (text.type === "mention") {
-          return await mentionRichText(text, notion);
-        }
-      }),
-    )
-  ).join("");
+  const items = await Promise.all(
+    textArray.map(async (text) => ({
+      markers: text.type === "text" ? emphasisMarkers(text.annotations) : [],
+      content: await richTextItem(text, notion),
+    })),
+  );
+
+  // Emphasis is opened and closed only when it changes between items, so
+  // adjacent items sharing it don't produce touching markers like **a****b**.
+  // Markdown emphasis can't start or end with whitespace, so whitespace is
+  // always kept outside of the markers.
+  const open: string[] = [];
+  let markdown = "";
+  let pendingWhitespace = "";
+  for (const { markers, content } of items) {
+    const [, leading, core, trailing] = splitWhitespace(content);
+    if (!core) {
+      pendingWhitespace += content;
+      continue;
+    }
+    const firstToClose = open.findIndex((marker) => !markers.includes(marker));
+    if (firstToClose !== -1) {
+      markdown += open.splice(firstToClose).reverse().join("");
+    }
+    markdown += pendingWhitespace + leading;
+    for (const marker of markers) {
+      if (!open.includes(marker)) {
+        open.push(marker);
+        markdown += marker;
+      }
+    }
+    markdown += core;
+    pendingWhitespace = trailing;
+  }
+  return markdown + open.reverse().join("") + pendingWhitespace;
 }
 
-export const video = (block: VideoBlockObjectResponse) => {
-  const videoBlock = block.video;
-  if (videoBlock.type === "file") {
-    return htmlVideo(blockIdToApiUrl(block.id));
+/**
+ * Extracts the video id from YouTube watch, embed, shorts and youtu.be links.
+ */
+export function youtubeVideoId(url: string): string | null {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return null;
   }
-  const url = videoBlock.external.url;
-  if (url.startsWith("https://www.youtube.com/")) {
-    /*
-      YouTube video links that include embed or watch.
-      E.g. https://www.youtube.com/watch?v=[id], https://www.youtube.com/embed/[id]
-    */
-    // get last 11 characters of the url as the video id
-    const videoId = url.slice(-11);
+  const host = parsed.hostname.replace(/^(www|m)\./, "");
+  let id: string | null = null;
+  if (host === "youtu.be") {
+    id = parsed.pathname.slice(1);
+  } else if (host === "youtube.com") {
+    id =
+      parsed.searchParams.get("v") ??
+      parsed.pathname.match(/^\/(?:embed|shorts|live)\/([^/]+)/)?.[1] ??
+      null;
+  }
+  return id && /^[\w-]{11}$/.test(id) ? id : null;
+}
+
+export const video = (url: string) => {
+  const videoId = youtubeVideoId(url);
+  if (videoId) {
     return `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   }
   return htmlVideo(url);
@@ -256,20 +305,10 @@ function htmlVideo(url: string) {
 </video>`;
 }
 
-export const pdf = (block: PdfBlockObjectResponse) => {
-  const pdfBlock = block.pdf;
-  const url =
-    pdfBlock.type === "file"
-      ? blockIdToApiUrl(block.id)
-      : pdfBlock.external.url;
+export const pdf = (url: string) => {
   return `<embed src="${url}" type="application/pdf" style="width: 100%;aspect-ratio: 2/3;height: auto;" />`;
 };
 
-export const audio = (block: AudioBlockObjectResponse) => {
-  const audioBlock = block.audio;
-  const url =
-    audioBlock.type === "file"
-      ? blockIdToApiUrl(block.id)
-      : audioBlock.external.url;
+export const audio = (url: string) => {
   return `<audio controls src="${url}"></audio>`;
 };

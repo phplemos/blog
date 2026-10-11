@@ -52,7 +52,7 @@ Understanding DI Containers was an eye-opener for me. I had already used them ex
 
 A **Container** is essentially the registry and runtime environment where your object instances are created, wired together, and managed. Every managed object in your application lives inside and is resolved through this container.
 
-![](https://notion-hugo.pages.dev/api?block_id=352b8e18-e88b-80e7-a2e3-cd0f1669cec5)
+![](/notion/352b8e18-e88b-80e7-a2e3-cd0f1669cec5)
 
 The benchmark above compares major IoC Containers in the .NET ecosystem across scopes such as **Singleton**, **Transient**, **Combined**, and **Complex**. While implementations differ in performance and optimization targets, the conceptual foundation remains identical. Understanding the fundamentals allows you to comfortably navigate any framework's DI system.
 

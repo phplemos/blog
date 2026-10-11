@@ -12,6 +12,20 @@ import {
 import * as md from "./md";
 import { getBlockChildren, getPageRelrefFromId } from "./notion";
 import { plainText } from "./md";
+import { downloadNotionFile } from "../assets";
+
+type NotionFile =
+  | { type: "external"; external: { url: string } }
+  | { type: "file"; file: { url: string } };
+
+/**
+ * Returns the URL a file is served from, downloading Notion-hosted files.
+ */
+function fileUrl(blockId: string, file: NotionFile): Promise<string> | string {
+  return file.type === "external"
+    ? file.external.url
+    : downloadNotionFile(blockId, file.file.url);
+}
 
 /**
  * Converts a Notion page to Markdown.
@@ -137,19 +151,6 @@ export class NotionToMarkdown {
 
     for (const block of blocks) {
       if (!isFullBlock(block)) continue;
-      let expiry_time: string | undefined = undefined;
-      if (block.type === "pdf" && block.pdf.type === "file") {
-        expiry_time = block.pdf.file.expiry_time;
-      }
-      if (block.type === "image" && block.image.type === "file") {
-        expiry_time = block.image.file.expiry_time;
-      }
-      if (block.type === "video" && block.video.type === "file") {
-        expiry_time = block.video.file.expiry_time;
-      }
-      if (block.type === "file" && block.file.type === "file") {
-        expiry_time = block.file.file.expiry_time;
-      }
 
       if (
         block.has_children &&
@@ -168,7 +169,6 @@ export class NotionToMarkdown {
           type: block.type,
           parent: await this.blockToMarkdown(block),
           children: [],
-          expiry_time,
         });
 
         await this.blocksToMarkdown(
@@ -183,7 +183,6 @@ export class NotionToMarkdown {
         type: block.type,
         parent: tmp,
         children: [],
-        expiry_time,
       });
     }
     return mdBlocks;
@@ -202,10 +201,10 @@ export class NotionToMarkdown {
     switch (type) {
       case "image": {
         const image = block.image;
-        if (image.type === "external") {
-          return md.image(plainText(image.caption), image.external.url);
-        }
-        return md.image(plainText(image.caption), blockIdToApiUrl(block.id));
+        return md.image(
+          plainText(image.caption),
+          await fileUrl(block.id, image),
+        );
       }
       case "divider": {
         return md.divider();
@@ -216,16 +215,12 @@ export class NotionToMarkdown {
       }
 
       case "video":
-        return md.video(block);
+        return md.video(await fileUrl(block.id, block.video));
       case "pdf":
-        return md.pdf(block);
+        return md.pdf(await fileUrl(block.id, block.pdf));
       case "file": {
         const file = block.file;
-        const link =
-          file.type === "external"
-            ? file.external.url
-            : blockIdToApiUrl(block.id);
-        return md.link(file.name, link);
+        return md.link(file.name, await fileUrl(block.id, file));
       }
       case "bookmark": {
         const bookmark = block.bookmark;
@@ -287,30 +282,27 @@ export class NotionToMarkdown {
         let tableArr: string[][] = [];
         if (has_children) {
           const tableRows = await getBlockChildren(this.notionClient, id, 100);
-          // console.log(">>", tableRows);
-          let rowsPromise = tableRows?.map(async (row) => {
-            const { type } = row as any;
-            const cells = (row as any)[type]["cells"];
+          // rows are mapped (not pushed) so they keep their order
+          tableArr = await Promise.all(
+            tableRows.map(async (row) => {
+              const { type } = row as any;
+              const cells = (row as any)[type]["cells"];
 
-            /**
-             * this is more like a hack since matching the type text was
-             * difficult. So converting each cell to paragraph type to
-             * reuse the blockToMarkdown function
-             */
-            let cellStringPromise = cells.map(
-              async (cell: any) =>
-                await this.blockToMarkdown({
-                  type: "paragraph",
-                  paragraph: { rich_text: cell },
-                } as GetBlockResponse),
-            );
-
-            const cellStringArr = await Promise.all(cellStringPromise);
-            // console.log("~~", cellStringArr);
-            tableArr.push(cellStringArr);
-            // console.log(tableArr);
-          });
-          await Promise.all(rowsPromise || []);
+              /**
+               * this is more like a hack since matching the type text was
+               * difficult. So converting each cell to paragraph type to
+               * reuse the blockToMarkdown function
+               */
+              return Promise.all(
+                cells.map((cell: any) =>
+                  this.blockToMarkdown({
+                    type: "paragraph",
+                    paragraph: { rich_text: cell },
+                  } as GetBlockResponse),
+                ),
+              ) as Promise<string[]>;
+            }),
+          );
         }
         return md.table(tableArr);
       }
@@ -457,7 +449,7 @@ export class NotionToMarkdown {
         return md.quote(quote_string.trim());
 
       case "audio":
-        return md.audio(block);
+        return md.audio(await fileUrl(block.id, block.audio));
       case "template":
       case "synced_block":
       case "child_page":

@@ -3,11 +3,22 @@ import { Client, isFullUser, iteratePaginatedAPI } from "@notionhq/client";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { NotionToMarkdown } from "./markdown/notion-to-md";
 import YAML from "yaml";
-import { sh } from "./sh";
 import { DatabaseMount, PageMount } from "./config";
-import { getPageTitle, getCoverLink, getFileName } from "./helpers";
+import { getPageTitle, getFileName } from "./helpers";
 import path from "path";
 import { getContentFile } from "./file";
+import { downloadNotionFile } from "./assets";
+
+// Bump this whenever the generated markdown changes, so that every page is
+// rendered again on the next sync instead of only the ones edited in Notion.
+export const RENDER_VERSION = 2;
+
+async function getCoverLink(page: PageObjectResponse): Promise<string | null> {
+  if (page.cover === null) return null;
+  return page.cover.type === "external"
+    ? page.cover.external.url
+    : downloadNotionFile(page.id, page.cover.file.url);
+}
 
 export async function renderPage(page: PageObjectResponse, notion: Client) {
   // load formatter config
@@ -15,10 +26,8 @@ export async function renderPage(page: PageObjectResponse, notion: Client) {
   n2m.setUnsupportedTransformer((type) => {
     return `{{< notion-unsupported-block type=${type} >}}`;
   });
-  let frontInjectString = "";
   const mdblocks = await n2m.pageToMarkdown(page.id);
   const mdString = n2m.toMarkdownString(mdblocks);
-  page.properties.Name;
   const title = getPageTitle(page);
   const frontMatter: Record<
     string,
@@ -31,7 +40,7 @@ export async function renderPage(page: PageObjectResponse, notion: Client) {
   };
 
   // set featuredImage
-  const featuredImageLink = await getCoverLink(page.id, notion);
+  const featuredImageLink = await getCoverLink(page);
   if (featuredImageLink) {
     frontMatter.featuredImage = featuredImageLink;
   }
@@ -66,7 +75,7 @@ export async function renderPage(page: PageObjectResponse, notion: Client) {
           if (response.date) frontMatter[property] = response.date.start;
           break;
         case "number":
-          if (response.number) frontMatter[property] = response.number;
+          if (response.number !== null) frontMatter[property] = response.number;
           break;
         case "phone_number":
           if (response.phone_number)
@@ -74,6 +83,7 @@ export async function renderPage(page: PageObjectResponse, notion: Client) {
           break;
         case "status":
           if (response.status) frontMatter[property] = response.status.name;
+          break;
         // ignore these properties
         case "last_edited_by":
         case "last_edited_time":
@@ -108,6 +118,7 @@ export async function renderPage(page: PageObjectResponse, notion: Client) {
           case "rich_text":
             frontMatter[property] = frontMatter[property] || "";
             frontMatter[property] += result.rich_text.plain_text;
+            break;
           // ignore these
           case "relation":
           case "title":
@@ -135,20 +146,18 @@ export async function renderPage(page: PageObjectResponse, notion: Client) {
   // save metadata
   frontMatter.NOTION_METADATA = page;
   frontMatter.MANAGED_BY_NOTION_HUGO = true;
+  frontMatter.NOTION_HUGO_RENDER_VERSION = RENDER_VERSION;
 
-  return {
-    title,
-    pageString:
-      "---\n" +
-      YAML.stringify(frontMatter, {
-        defaultStringType: "QUOTE_DOUBLE",
-        defaultKeyType: "PLAIN",
-      }) +
-      "\n---\n" +
-      frontInjectString +
-      "\n" +
-      mdString,
-  };
+  return (
+    "---\n" +
+    YAML.stringify(frontMatter, {
+      defaultStringType: "QUOTE_DOUBLE",
+      defaultKeyType: "PLAIN",
+    }) +
+    "\n---\n" +
+    "\n" +
+    mdString
+  );
 }
 
 export async function savePage(
@@ -162,15 +171,18 @@ export async function savePage(
     getFileName(getPageTitle(page), page.id),
   );
   const post = getContentFile(postpath);
-  if (post && post.metadata.last_edited_time === page.last_edited_time) {
+  if (
+    post &&
+    post.renderVersion === RENDER_VERSION &&
+    post.metadata.last_edited_time === page.last_edited_time
+  ) {
     console.info(`[Info] The post ${postpath} is up-to-date, skipped.`);
     return;
   }
   // otherwise update the page
   console.info(`[Info] Updating ${postpath}`);
 
-  const { title, pageString } = await renderPage(page, notion);
-  const fileName = getFileName(title, page.id);
-  await sh(`hugo new "${mount.target_folder}/${fileName}"`, false);
-  fs.writeFileSync(`content/${mount.target_folder}/${fileName}`, pageString);
+  const pageString = await renderPage(page, notion);
+  fs.ensureDirSync(path.dirname(postpath));
+  fs.writeFileSync(postpath, pageString);
 }
