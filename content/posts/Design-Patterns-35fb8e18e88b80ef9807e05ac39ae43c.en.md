@@ -28,7 +28,7 @@ We will look at the core principles across the three foundational categories. Th
 
 Returning to our environment analogy: think of design patterns as conventions for how items should behave and fit within a given space. Rules for crafting objects from a mold that dictates exactly where they belong — organized, clean, with zero clutter, just like a well-arranged room where everything has its designated spot.
 
-![](https://notion-hugo.pages.dev/api?block_id=363b8e18-e88b-80f1-8a05-f0ca78b585bf)
+![](/notion/363b8e18-e88b-80f1-8a05-f0ca78b585bf)
 
 This image represents an organized environment adhering to intentional design patterns — a visual parallel that helps us internalize the concept.
 
@@ -38,7 +38,7 @@ This image represents an organized environment adhering to intentional design pa
 
 Just as different objects in a room serve different functions and are organized accordingly, programming features distinct categories of recurring architectural challenges with battle-tested solutions. The Gang of Four classifies these patterns into three primary families:
 
-![](https://notion-hugo.pages.dev/api?block_id=365b8e18-e88b-8053-87d0-f4cfb0e52f7a)
+![](/notion/365b8e18-e88b-8053-87d0-f4cfb0e52f7a)
 
 ### 1. Creational Patterns
 Creational patterns handle the instantiation and lifecycle of objects, decoupling a system from how its objects are created, composed, and represented.

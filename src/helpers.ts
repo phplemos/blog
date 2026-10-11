@@ -1,4 +1,3 @@
-import { Client, isFullPage } from "@notionhq/client";
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 
 export function getPageTitle(page: PageObjectResponse): string {
@@ -11,24 +10,12 @@ export function getPageTitle(page: PageObjectResponse): string {
   );
 }
 
-export async function getCoverLink(
-  page_id: string,
-  notion: Client,
-): Promise<string | null> {
-  const page = await notion.pages.retrieve({ page_id });
-  if (!isFullPage(page) || page.cover === null) {
-    return null;
-  }
-  return page.cover.type === "external"
-    ? page.cover.external.url
-    : pageIdToApiUrl(page_id);
-}
-
 export function getFileName(title: string, page_id: string): string {
-  return (
-    title.replaceAll(" ", "-").replace(/--+/g, "-") +
-    "-" +
-    page_id.replaceAll("-", "") +
-    ".md"
-  );
+  const slug = title
+    // characters that are invalid in file names or break URLs and relrefs
+    .replace(/[\\/:*?"<>|#%]/g, "")
+    .trim()
+    .replaceAll(" ", "-")
+    .replace(/--+/g, "-");
+  return `${slug}-${page_id.replaceAll("-", "")}.md`;
 }

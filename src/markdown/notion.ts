@@ -1,21 +1,25 @@
-import { Client, isFullPage } from "@notionhq/client";
+import {
+  APIErrorCode,
+  APIResponseError,
+  Client,
+  isFullPage,
+} from "@notionhq/client";
 import {
   GetBlockResponse,
   ListBlockChildrenResponse,
-  PageObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { plainText } from "./md";
+import { getFileName, getPageTitle } from "../helpers";
 
 export const getBlockChildren = async (
   notionClient: Client,
   block_id: string,
   totalPage: number | null,
 ) => {
-  try {
-    let results: GetBlockResponse[] = [];
-    let pageCount = 0;
-    let start_cursor = undefined;
+  let results: GetBlockResponse[] = [];
+  let pageCount = 0;
+  let start_cursor = undefined;
 
+  try {
     do {
       const response: ListBlockChildrenResponse =
         await notionClient.blocks.children.list({
@@ -30,32 +34,22 @@ export const getBlockChildren = async (
       start_cursor != null &&
       (totalPage == null || pageCount < totalPage)
     );
-
-    return results;
   } catch (e) {
-    console.log(e);
-    return [];
+    // e.g. a synced block whose original page is not shared with the integration
+    if (
+      e instanceof APIResponseError &&
+      (e.code === APIErrorCode.ObjectNotFound ||
+        e.code === APIErrorCode.RestrictedResource)
+    ) {
+      console.warn(`[Warn] Skipping children of ${block_id}: ${e.message}`);
+      return [];
+    }
+    // anything else would silently publish a truncated page
+    throw e;
   }
+
+  return results;
 };
-
-export function getPageTitle(page: PageObjectResponse): string {
-  const title = page.properties.Name ?? page.properties.title;
-  if (title.type === "title") {
-    return plainText(title.title);
-  }
-  throw Error(
-    `page.properties.Name has type ${title.type} instead of title. The underlying Notion API might has changed, please report an issue to the author.`,
-  );
-}
-
-export function getFileName(title: any, page_id: any): string {
-  return (
-    title.replaceAll(" ", "-").replace(/--+/g, "-") +
-    "-" +
-    page_id.replaceAll("-", "") +
-    ".md"
-  );
-}
 
 export const getPageRelrefFromId = async (
   pageId: string,

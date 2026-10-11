@@ -9,7 +9,6 @@ export type MdBlock = {
   type?: string;
   parent: string;
   children: MdBlock[];
-  expiry_time?: string;
 };
 
 export type CustomEmojiResponse = {
