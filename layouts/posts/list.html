@@ -16,22 +16,15 @@
       <!-- Search Input -->
       <div class="search-wrapper">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <input type="text" id="search-input" placeholder="Search posts by title, description, or tag..." autocomplete="off">
-        <input type="text" id="search-input" placeholder="{{ i18n "search_placeholder" | default "Search posts by title, description, or tag..." }}" autocomplete="off">
+        {{ $placeholder := i18n "search_placeholder" | default "Search posts by title, description, or tag..." }}
+        <input type="text" id="search-input" placeholder="{{ $placeholder }}" aria-label="{{ $placeholder }}" autocomplete="off">
       </div>
       
       <!-- Sort Select -->
       <div class="sort-wrapper">
-        <label for="sort-select">Sort by:</label>
         <label for="sort-select">{{ i18n "sort_by" | default "Sort by:" }}</label>
         <div class="select-container">
           <select id="sort-select">
-            <option value="date-desc">Date: Newest First</option>
-            <option value="date-asc">Date: Oldest First</option>
-            <option value="title-asc">Title: A-Z</option>
-            <option value="title-desc">Title: Z-A</option>
-            <option value="reading-desc">Reading Time: Longest</option>
-            <option value="reading-asc">Reading Time: Shortest</option>
             <option value="date-desc">{{ i18n "sort_date_desc" | default "Date: Newest First" }}</option>
             <option value="date-asc">{{ i18n "sort_date_asc" | default "Date: Oldest First" }}</option>
             <option value="title-asc">{{ i18n "sort_title_asc" | default "Title: A-Z" }}</option>
@@ -45,11 +38,9 @@
 
     <!-- TAG FILTERS -->
     <div class="tags-filter-wrapper">
-      <span class="tags-label">Filter by Tag:</span>
       <span class="tags-label">{{ i18n "filter_by_tag" | default "Filter by Tag:" }}</span>
       <div class="tags-list-container" id="tags-filter-list">
-        <button class="tag-btn active" data-tag="all">All</button>
-        <button class="tag-btn active" data-tag="all">{{ i18n "tag_all" | default "All" }}</button>
+        <button class="tag-btn active" data-tag="all" aria-pressed="true">{{ i18n "tag_all" | default "All" }}</button>
         <!-- Dynamic tags rendering via Hugo -->
         {{ $allTags := slice }}
         {{ range .RegularPages }}
@@ -60,7 +51,7 @@
           {{ end }}
         {{ end }}
         {{ range $allTags }}
-          <button class="tag-btn" data-tag="{{ . | lower }}">{{ . }}</button>
+          <button class="tag-btn" data-tag="{{ . | lower }}" aria-pressed="false">{{ . }}</button>
         {{ end }}
       </div>
     </div>
@@ -94,8 +85,6 @@
         <!-- Card Header Image/Emoji -->
         {{ if .Params.featuredImage }}
           <div class="card-image" style="background-image: url('{{ .Params.featuredImage | relURL }}')"></div>
-        {{ else if and .Params.NOTION_METADATA .Params.NOTION_METADATA.cover }}
-          <div class="card-image" style="background-image: url('{{ .Params.NOTION_METADATA.cover | relURL }}')"></div>
         {{ else if and .Params.NOTION_METADATA .Params.NOTION_METADATA.icon (eq .Params.NOTION_METADATA.icon.type "emoji") }}
           <div class="card-emoji-header">
             <span class="card-emoji">{{ .Params.NOTION_METADATA.icon.emoji }}</span>
@@ -115,7 +104,6 @@
             </span>
             <span class="card-reading-time">
               <i class="fa-solid fa-clock" aria-hidden="true"></i>
-              {{ $readingTime }} min read
               {{ $readingTime }} {{ i18n "min_read" | default "min read" }}
             </span>
           </div>
@@ -132,7 +120,7 @@
             {{ else if .Summary }}
               {{ .Summary | plainify | truncate 130 }}
             {{ else }}
-              No description available.
+              {{ i18n "no_description" | default "No description available." }}
             {{ end }}
           </p>
           
@@ -152,8 +140,7 @@
   
   <!-- Empty State Message -->
   <div class="no-posts-message" id="no-posts-msg" style="display: none;">
-    <p>No posts match your filters. Try search something else or clearing the filters!</p>
-    <p>{{ i18n "no_posts_match" | default "No posts match your filters. Try search something else or clearing the filters!" }}</p>
+    <p>{{ i18n "no_posts_match" | default "No posts match your filters. Try searching for something else or clearing the filters!" }}</p>
   </div>
 </section>
 
@@ -176,8 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!btn) return;
     
     // Toggle active state
-    tagsContainer.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+    tagsContainer.querySelectorAll('.tag-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
     
     activeTag = btn.getAttribute('data-tag');
     filterAndSortPosts();
