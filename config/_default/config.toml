@@ -54,7 +54,7 @@ author = "authors"
 
     [languages.pt-br.params]
       author = "Pedro Henrique Pinheiro Lemos"
-      info = ["Engenheiro de Software Fullstack", "I use arch btw :|", "One thing is one thing, another thing is another thing", "Resolvendo problemas reais"]
+      info = ["Engenheiro de Software Fullstack", "Resolvendo problemas reais"]
       description = "Espaço para compartilhar experiências, arquitetura de software e tecnologia."
       dateFormat = "2 de January, 2006"
 
@@ -91,7 +91,7 @@ author = "authors"
 
     [languages.en.params]
       author = "Pedro Henrique Pinheiro Lemos"
-      info = ["Fullstack Software Engineer", "I use arch btw :|", "One thing is one thing, another thing is another thing", "Solving real-world problems"]
+      info = ["Fullstack Software Engineer", "Solving real-world problems"]
       description = "A space to share experiences, software architecture insights, and technology."
       dateFormat = "January 2, 2006"
 
