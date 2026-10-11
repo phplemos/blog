@@ -40,3 +40,5 @@ other = "Built with"
 [footer_and]
 other = "and maintained by"
 
+[no_description]
+other = "No description available."

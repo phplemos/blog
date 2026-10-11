@@ -40,3 +40,5 @@ other = "Criado com"
 [footer_and]
 other = "e mantido por"
 
+[no_description]
+other = "Sem descrição disponível."
