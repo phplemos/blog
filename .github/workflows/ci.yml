@@ -9,17 +9,30 @@ on:
     branches: [main]
 
 env:
-  NODE_VERSION: 23.x
+  HUGO_VERSION: 0.167.0
 
 jobs:
-  typecheck:
+  sync-script:
     runs-on: ubuntu-latest
-
     steps:
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run format:check
+
+  hugo-build:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v6
-      - run: |
-          npm install
-          npm run typecheck
+        with:
+          submodules: true
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ env.HUGO_VERSION }}
+          extended: true
+      - run: hugo --gc --minify
