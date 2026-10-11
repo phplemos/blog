@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * *' # sync with Notion everyday at 00:00 UTC https://crontab.guru/every-day-at-midnight
   workflow_dispatch:
+  repository_dispatch:
 
 permissions:
   contents: read
@@ -15,6 +18,9 @@ concurrency:
   group: "github-pages"
   cancel-in-progress: false
 
+env:
+  HUGO_VERSION: 0.167.0
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,23 +30,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
         with:
-          submodules: true
-          fetch-depth: 0
+          submodules: true  # Fetch Hugo themes
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version-file: .nvmrc
+          cache: npm
 
+      # Commits made with GITHUB_TOKEN don't trigger other workflows, so the
+      # sync runs here, in the same job that builds and deploys the site.
       - name: Sync content with Notion
         run: |
-          npm install
+          npm ci
           npm start
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
 
       - name: Commit updated content
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Sync content with Notion
 
@@ -50,7 +59,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: ${{ env.HUGO_VERSION }}
           extended: true
 
       - name: Build with Hugo
