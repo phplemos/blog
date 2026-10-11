@@ -49,8 +49,6 @@ author = "authors"
   [languages.pt-br]
     locale = "pt-br"
     label = "🇧🇷 PT"
-    languageCode = "pt-br"
-    languageName = "🇧🇷 PT"
     weight = 1
     title = "Pedro Pinheiro"
 
@@ -88,8 +86,6 @@ author = "authors"
   [languages.en]
     locale = "en"
     label = "🇺🇸 EN"
-    languageCode = "en"
-    languageName = "🇺🇸 EN"
     weight = 2
     title = "Pedro Pinheiro"
 

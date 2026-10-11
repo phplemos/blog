@@ -24,7 +24,7 @@
             {{ if ne $.Site.Language .Language }}
               <li class="navigation-item lang-switch-item">
                 <a class="lang-switch-btn" href="{{ .RelPermalink }}" title="Switch language">
-                  {{ (default .Language.LanguageName .Language.Label) | emojify }}
+                  {{ .Language.Label | emojify }}
                 </a>
               </li>
             {{ end }}
