@@ -43,6 +43,10 @@ NOTION_METADATA:
         - id: "02a4eb89-2f55-40be-ab7e-4489df020e63"
           name: "Roadmap CEPEDI"
           color: "orange"
+    Created time:
+      id: "BzcA"
+      type: "created_time"
+      created_time: "2026-04-30T16:55:00.000Z"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -66,6 +70,7 @@ NOTION_METADATA:
           type: "person"
           person:
             email: "phplemos.dev@gmail.com"
+            email_verified: true
     custom-front-matter:
       id: "c~kA"
       type: "rich_text"
@@ -122,10 +127,11 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Código Limpo"
           href: null
-  url: "https://www.notion.so/C-digo-Limpo-352b8e18e88b802eb6a4dae5308316ea"
+  url: "https://app.notion.com/p/C-digo-Limpo-352b8e18e88b802eb6a4dae5308316ea"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
+NOTION_HUGO_RENDER_VERSION: 2
 
 ---
 
@@ -142,7 +148,7 @@ Ah quero entrar no contexto mais não, a partir de agora pressuponho eu que voc�
 No decorrer dos meus estudos percebi que o “Código limpo” é a filosofia de quem preza pela excelência em tudo que faz. Se você preza por algo bem feito, vai buscar fazer da melhor forma possível. No decorrer dos estudos, pensei em diversos paralelos com o mundo real, um deles é sobre que, se você preza pela qualidade ao adquirir um produto, o cliente que contrata seu serviço de desenvolvedor de software também vai prezar.
 
 
-Seguindo essa ideia a gente começa a refletir sobre oque nós como desenvolvedor estamos entregando como produto. Vamos fazer um exercício mental, você se depara com um cliente (chefe, techlead, scrummaster) seu falando sobre seu produto (código), você acha que seriam elogios ou reclamações? Partindo desse principio, quando entendemos que o código limpo fala mais de você como profissional do que do código em si, quando colocamos esse ponto de vista começamos a nos tornar mais críticos quanto a qualidade do código que nós entregamos e te convido a levar essa filosofia para fora do âmbito profissional e ser aplicada em outras partes da sua vida. Dessa forma, parte do processo de ser crítico sobre seu próprio código é buscar conhecimento para entender o que é qualidade no que você está entregando. Assim, quando buscamos conhecimento sobre como escrever um bom código nos deparamos com o livro “**Código limpo”**(Clean Code), escrito por _Robert C. Martin, esse livro_ traz uma boa definição do que precisa ser contemplado para ser considerado um código de qualidade.
+Seguindo essa ideia a gente começa a refletir sobre oque nós como desenvolvedor estamos entregando como produto. Vamos fazer um exercício mental, você se depara com um cliente (chefe, techlead, scrummaster) seu falando sobre seu produto (código), você acha que seriam elogios ou reclamações? Partindo desse principio, quando entendemos que o código limpo fala mais de você como profissional do que do código em si, quando colocamos esse ponto de vista começamos a nos tornar mais críticos quanto a qualidade do código que nós entregamos e te convido a levar essa filosofia para fora do âmbito profissional e ser aplicada em outras partes da sua vida. Dessa forma, parte do processo de ser crítico sobre seu próprio código é buscar conhecimento para entender o que é qualidade no que você está entregando. Assim, quando buscamos conhecimento sobre como escrever um bom código nos deparamos com o livro “**Código limpo”**(Clean Code), escrito por *Robert C. Martin, esse livro* traz uma boa definição do que precisa ser contemplado para ser considerado um código de qualidade.
 
 
 # Código limpo
@@ -208,7 +214,7 @@ No exemplo vemos como há atividades no nosso dia a dia que são hábitos, assim
 ## Boas Práticas
 
 
-No decorrer dos estudos me deparei com uma aula onde o professor passava por cada item do que o livro traz como boas práticas em codificação. A partir daqui vou ser mais direto, desde que você tenha entendido sobre os conceitos filosóficos em volta da ideia de excelência aplicadas aos hábitos, é so pegar essas boas práticas e inserir em sua rotina de programar. A ideia que o _Clean Code_ traz sobre oque é um código de qualidade, quando contempla esses princípios a seguir
+No decorrer dos estudos me deparei com uma aula onde o professor passava por cada item do que o livro traz como boas práticas em codificação. A partir daqui vou ser mais direto, desde que você tenha entendido sobre os conceitos filosóficos em volta da ideia de excelência aplicadas aos hábitos, é so pegar essas boas práticas e inserir em sua rotina de programar. A ideia que o *Clean Code* traz sobre oque é um código de qualidade, quando contempla esses princípios a seguir
 
 
 ### Nomes
@@ -261,7 +267,7 @@ No decorrer dos estudos me deparei com uma aula onde o professor passava por cad
 
 - Extraia trechos em métodos privados
 
-    Se você tem uma parte grande de código dentro de seu método mas aquela parte faz uma coisa só, você pode extrair esse trecho em método privado e declarar um nome que contemple os requisitos que o _Clean Code _sobre nomes, assim seus métodos ficam fácil de se ler
+    Se você tem uma parte grande de código dentro de seu método mas aquela parte faz uma coisa só, você pode extrair esse trecho em método privado e declarar um nome que contemple os requisitos que o *Clean Code* sobre nomes, assim seus métodos ficam fácil de se ler
 
 - Devem fazer apenas uma coisa
 
@@ -276,6 +282,9 @@ No decorrer dos estudos me deparei com uma aula onde o professor passava por cad
     Isso é sobre como se o nome de seu método é `ProcessarCompra()` e dentro desse método ta processando a compra e disparando email, no nome não diz nada sobre processar email, um nesse exemplo se quiser poderia ser direto `ProcessarCompraComEnvioEmail()`
 
 - Quando ler o método ele deve ser congruente e fazer sentido.
+
+    Mais do mesmo
+
 - Numero de linhas ≤ 20
 
     Mesmo role do numero de caracteres por linha

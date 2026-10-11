@@ -69,6 +69,7 @@ NOTION_METADATA:
           type: "person"
           person:
             email: "phplemos.dev@gmail.com"
+            email_verified: true
     custom-front-matter:
       id: "c~kA"
       type: "rich_text"
@@ -112,11 +113,12 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Programação Orientada à Objetos"
           href: null
-  url: "https://www.notion.so/Programa-o-Orientada-Objetos-33cb8e18e88b805e8ed0c8\
-    77dbc8c3b5"
+  url: "https://app.notion.com/p/Programa-o-Orientada-Objetos-33cb8e18e88b805e8ed\
+    0c877dbc8c3b5"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
+NOTION_HUGO_RENDER_VERSION: 2
 
 ---
 
@@ -130,7 +132,7 @@ MANAGED_BY_NOTION_HUGO: true
 Orientação à objetos é um tipo de paradigma de programação que traz conceitos do mundo real para o mundo digital. Esse paradigma surgiu na Noruega nos anos 60, desde então a orientação à objetos vem sendo melhorada até os dias de hoje. Hoje em dia diversas linguagens de programação implementam POO, podendo ser de de forma parcial ou total. Uma das linguagens mais conhecidas por implementar totalmente POO é o JAVA, no java tudo é um objeto exceto os tipos primitivos. 
 
 
-> _Tá, mas e ai, o que isso quer dizer? oque torna uma linguagem de programação ser orientada a objetos? _
+> *Tá, mas e ai, o que isso quer dizer? oque torna uma linguagem de programação ser orientada a objetos?* 
 
 
 Devagar vejo a importância de entender mais a fundo conceitos antes de partirmos pra implementação ou mão na massa, para responder essas perguntas precisamos entender os principais conceitos envolta desse paradigma. 
@@ -142,7 +144,7 @@ Devagar vejo a importância de entender mais a fundo conceitos antes de partirmo
 Vimos que a orientação a objetos um dos intuitos é trazer os objetos do mundo real para o mundo digital. No mundo real, quando nós observamos não nosso redor temos objetos pra todo lado, cadeira, relógio, copo e etc.
 
 
-> _Legal, entendi que a ideia é representar objeto do mundo real no digital, mas ainda não entendi a ideia, o que é um objeto? o que define que um copo ou relógio ser um objeto?_ 
+> *Legal, entendi que a ideia é representar objeto do mundo real no digital, mas ainda não entendi a ideia, o que é um objeto? o que define que um copo ou relógio ser um objeto?* 
 
 
 Na disciplina de L.P. II, meu professor  trouxe essa reflexão para entender melhor sobre POO. Justamente o que você questionou “Oque é um objeto?”, “Oque define que um copo ou relógio são objetos?”. A partir desse questionamento. surgiram diversas definições que devagar foram todas chegando ao mesmo ponto. Esse de tentar definir o que seria um objeto foi interessante pois geralmente não se questionamos sobre coisas que já são consideradas “óbvias”, ao tentar definir podemos pensar um objeto como algo que tem características através de propriedades e funcionalidades, por exemplo, uma caneca é um objeto pois ele tem características como formato, matéria prima (plástico, porcelana), cor, capacidade de líquidos, tem funcionalidades como reter algum liquido para ser bebido, capturando essas características e funções conseguimos representar o copo do mundo real no mundo digital.
@@ -151,10 +153,10 @@ Na disciplina de L.P. II, meu professor  trouxe essa reflexão para entender mel
 ## Classe
 
 
-> _Ta, entendi que um objeto tem características e funcionalidades, mas até agora não entendi como diabos eu vou conseguir criar um objeto dentro do digital? _
+> *Ta, entendi que um objeto tem características e funcionalidades, mas até agora não entendi como diabos eu vou conseguir criar um objeto dentro do digital?* 
 
 
-_Calma bonitão, ai que entra o principal conceito da orientação à objetos, agora vamos falar sobre __**Classe**__ ou __`**class**`__._
+*Calma bonitão, ai que entra o principal conceito da orientação à objetos, agora vamos falar sobre **Classe** ou **`class`**.*
 
 
 Vamos fazer um exercício mental, pegue um objeto ao seu redor, no meu caso tem uma caneca de café aqui, olhe pra um seu objeto agora, tenta me dizer algumas coisas sobre ele, imagina que eu não sei o que é seu objeto e você vai ter que me descrever por escrito, se você fosse definir por escrito uma caneca de café como a minha agora, você escreveria coisas como:
@@ -176,10 +178,10 @@ Vamos fazer um exercício mental, pegue um objeto ao seu redor, no meu caso tem 
 Para definirmos essa caneca no mundo digital, nós temos que a partir dessa lista de características definidas a partir da observação, transformar em propriedades e funções desse objeto, assim surge a ideia de **classe.**
 
 
-Uma classe é como se fosse uma forma de bolo ou um molde de alguma peça, onde você define as propriedades e métodos(Funcionalidades), onde toda vez que o computador precisar de um objeto com características do qual você definiu, ele utiliza a classe criada para criar um objeto, esse processo de criar um objeto a partir de uma classe se chama **instanciar **uma classe, nas linguagens de programação esse processo ocorre através do operador `**new**`**. ** 
+Uma classe é como se fosse uma forma de bolo ou um molde de alguma peça, onde você define as propriedades e métodos(Funcionalidades), onde toda vez que o computador precisar de um objeto com características do qual você definiu, ele utiliza a classe criada para criar um objeto, esse processo de criar um objeto a partir de uma classe se chama **instanciar** uma classe, nas linguagens de programação esse processo ocorre através do operador **`new`.**  
 
 
-> _Sim parceiro, beleza isso ai deu pra entender, mas como que é o diacho da classe no código?_
+> *Sim parceiro, beleza isso ai deu pra entender, mas como que é o diacho da classe no código?*
 
 
 Paciência jovem, agora que você pegou a ideia por trás de Classe e objeto faz sentido trazer exemplos. Vamos ver o exemplo de uma classe no java usando nosso exemplo da caneca.
@@ -322,7 +324,7 @@ Eu tenho duas classes `Pessoa` e `Empregado` que herda de `Pessoa`, Pessoa é um
 ## Polimorfismo
 
 
-Polimorfismo a gente entra no que tange sobre o comportamento de uma classe, onde ao extender uma classe cada uma pode se comportar de muitas formas, daí o nome polimorfismo. Ao buscar sobre a etimologia (origem da palavra) polimorfismo me deparei o seguinte, “poli” vem do grego “_polýs”_, significa “muito” e morfismo  “_morphé” significa “_formas”, ou seja, muitas formas, um objeto  de uma classe pode apresentar diversos comportamentos ou diversas formas, isso é interessante pois faz muito sentido. Um exemplo de polimorfismo muito utilizado é sobre a categoria de animais, mais precisamente sobre mamíferos, existem diversos tipos de mamíferos e todos eles fazem a maioria das mesmas atividades mas de formas diferentes. Exemplo, todo mamífero apresenta sistema pulmonar, mas cada uma espécie de mamífero respira de forma diferente, Um cachorro respira diferente de uma foca, mas ambos são mamíferos. Baseado nesse exemplo a gente percebe que apesar de ambos herdarem as características em comum de mamíferos eles precisaram criar o comportamento específico deles apesar de ter o mesmo objetivo, oxigenar as células, respirar.
+Polimorfismo a gente entra no que tange sobre o comportamento de uma classe, onde ao extender uma classe cada uma pode se comportar de muitas formas, daí o nome polimorfismo. Ao buscar sobre a etimologia (origem da palavra) polimorfismo me deparei o seguinte, “poli” vem do grego “*polýs”*, significa “muito” e morfismo  “*morphé” significa “*formas”, ou seja, muitas formas, um objeto  de uma classe pode apresentar diversos comportamentos ou diversas formas, isso é interessante pois faz muito sentido. Um exemplo de polimorfismo muito utilizado é sobre a categoria de animais, mais precisamente sobre mamíferos, existem diversos tipos de mamíferos e todos eles fazem a maioria das mesmas atividades mas de formas diferentes. Exemplo, todo mamífero apresenta sistema pulmonar, mas cada uma espécie de mamífero respira de forma diferente, Um cachorro respira diferente de uma foca, mas ambos são mamíferos. Baseado nesse exemplo a gente percebe que apesar de ambos herdarem as características em comum de mamíferos eles precisaram criar o comportamento específico deles apesar de ter o mesmo objetivo, oxigenar as células, respirar.
 
 
 Bora ver esse exemplo em código:

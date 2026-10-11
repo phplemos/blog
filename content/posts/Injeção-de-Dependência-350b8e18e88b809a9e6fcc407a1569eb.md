@@ -44,6 +44,10 @@ NOTION_METADATA:
         - id: "02a4eb89-2f55-40be-ab7e-4489df020e63"
           name: "Roadmap CEPEDI"
           color: "orange"
+    Created time:
+      id: "BzcA"
+      type: "created_time"
+      created_time: "2026-04-28T16:06:00.000Z"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -67,6 +71,7 @@ NOTION_METADATA:
           type: "person"
           person:
             email: "phplemos.dev@gmail.com"
+            email_verified: true
     custom-front-matter:
       id: "c~kA"
       type: "rich_text"
@@ -116,11 +121,12 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Injeção de Dependência"
           href: null
-  url: "https://www.notion.so/Inje-o-de-Depend-ncia-350b8e18e88b809a9e6fcc407a156\
-    9eb"
+  url: "https://app.notion.com/p/Inje-o-de-Depend-ncia-350b8e18e88b809a9e6fcc407a\
+    1569eb"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
+NOTION_HUGO_RENDER_VERSION: 2
 
 ---
 
@@ -147,7 +153,7 @@ Calma filhão, antes de entrarmos na implementação precisamos entender algumas
 
 - “Se precisa injetar na hora que for instanciar a classe, em algum lugar precisa ser dito que classe que vai ser injetada, se precisa disso precisa de alguém para gerenciar, se precisa de alguém pra gerenciar pode ser um pacote”.
 
-Pois, aí que a gente entra num negocio interessante, o conceito base que você vai ver em todos grandes frameworks, _Dependency Injection Containers._
+Pois, aí que a gente entra num negocio interessante, o conceito base que você vai ver em todos grandes frameworks, *Dependency Injection Containers.*
 
 
 # Containers
@@ -159,7 +165,7 @@ Esse conceito de containers é bem interessante, eu tive uma explosão mental qu
 Container é basicamente onde as instancias do seus objetos vão existir, cada objeto do seu código vai ser manipulado por um gerenciador e vão estar dentro desse ambiente (container). Ao assistir um curso sobre Injeção de dependências, o professor trouxe uma lista com diversos Gerenciador de Containers de Injeção de dependência, suas funcionalidades e performance nos benchmarks.
 
 
-![](https://notion-hugo.pages.dev/api?block_id=352b8e18-e88b-80e7-a2e3-cd0f1669cec5)
+![](/notion/352b8e18-e88b-80e7-a2e3-cd0f1669cec5.png)
 
 
 Esse gráfico traz uma comparação dos principais Gerenciadores de containers de injeção de dependência do .NET esse gráfico podemos ver a comparação de diversos tipos de Gerenciadores de container e sua performance em gerenciar cada tipo de injeção, nesse gráfico vemos alguns nomes em baixo, sendo eles, singleton, transiente, combined e complex, esses nomes são para definir o escopo do objeto a ser criado. O objetivo de trazer esse gráfico é mais sobre mostrar que apesar do conceito ser o mesmo, há diversas implementações cada uma focada em uma dor em específico. Nosso objetivo é entender os conceitos por traz para toda vez que você ver alguém discutir sobre qual container vai usar em um projeto que você vai participar, você entender o que ta acontecendo por traz dos panos. Agora vamos entender sobre o ciclo de vida de um objeto e como isso afeta nosso o uso em nosso container.
@@ -191,9 +197,9 @@ Pronto, entendemos o cenário agora vamos fazer um paralelo, um ciclo de vida de
 Um dos conteúdos que vi, trouxe exemplos de tipos de ciclo de vida no .NET, o .NET usa por padrão esses 3 tipos.
 
 - **Transient:**
-    - Um serviço com um tempo de vida _transitório_ é criado sempre que é solicitado do contêiner de serviço.
+    - Um serviço com um tempo de vida *transitório* é criado sempre que é solicitado do contêiner de serviço.
 - **Scoped:**
-    - Para aplicações web, um tempo de vida _com escopo_ indica que os serviços são criados uma vez por solicitação de cliente (conexão).
+    - Para aplicações web, um tempo de vida *com escopo* indica que os serviços são criados uma vez por solicitação de cliente (conexão).
 - **Singleton:**
     - Cada requisição subsequente da implementação do serviço, a partir do contêiner de injeção de dependência, utiliza a mesma instância.
 

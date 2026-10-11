@@ -63,6 +63,7 @@ NOTION_METADATA:
           type: "person"
           person:
             email: "phplemos.dev@gmail.com"
+            email_verified: true
     custom-front-matter:
       id: "c~kA"
       type: "rich_text"
@@ -100,11 +101,12 @@ NOTION_METADATA:
             color: "default"
           plain_text: "LifeOS - Meu Sistema de gestão pessoal"
           href: null
-  url: "https://www.notion.so/LifeOS-Meu-Sistema-de-gest-o-pessoal-35eb8e18e88b80\
-    a8b05ad073210ac3c6"
+  url: "https://app.notion.com/p/LifeOS-Meu-Sistema-de-gest-o-pessoal-35eb8e18e88\
+    b80a8b05ad073210ac3c6"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
+NOTION_HUGO_RENDER_VERSION: 2
 
 ---
 

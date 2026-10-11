@@ -34,6 +34,10 @@ NOTION_METADATA:
       id: "B%3C%3FS"
       type: "multi_select"
       multi_select: []
+    Created time:
+      id: "BzcA"
+      type: "created_time"
+      created_time: "2026-05-13T17:04:00.000Z"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -57,6 +61,7 @@ NOTION_METADATA:
           type: "person"
           person:
             email: "phplemos.dev@gmail.com"
+            email_verified: true
     custom-front-matter:
       id: "c~kA"
       type: "rich_text"
@@ -94,11 +99,12 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Arquitetura de software"
           href: null
-  url: "https://www.notion.so/Arquitetura-de-software-35fb8e18e88b80298244e4427ec\
-    e8d48"
+  url: "https://app.notion.com/p/Arquitetura-de-software-35fb8e18e88b80298244e442\
+    7ece8d48"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
+NOTION_HUGO_RENDER_VERSION: 2
 
 ---
 

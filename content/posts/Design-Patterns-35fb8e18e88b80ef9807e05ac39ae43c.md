@@ -41,6 +41,10 @@ NOTION_METADATA:
         - id: "02a4eb89-2f55-40be-ab7e-4489df020e63"
           name: "Roadmap CEPEDI"
           color: "orange"
+    Created time:
+      id: "BzcA"
+      type: "created_time"
+      created_time: "2026-05-13T17:04:00.000Z"
     draft:
       id: "JiWU"
       type: "checkbox"
@@ -64,6 +68,7 @@ NOTION_METADATA:
           type: "person"
           person:
             email: "phplemos.dev@gmail.com"
+            email_verified: true
     custom-front-matter:
       id: "c~kA"
       type: "rich_text"
@@ -110,10 +115,11 @@ NOTION_METADATA:
             color: "default"
           plain_text: "Design Patterns"
           href: null
-  url: "https://www.notion.so/Design-Patterns-35fb8e18e88b80ef9807e05ac39ae43c"
+  url: "https://app.notion.com/p/Design-Patterns-35fb8e18e88b80ef9807e05ac39ae43c"
   public_url: null
   archived: false
 MANAGED_BY_NOTION_HUGO: true
+NOTION_HUGO_RENDER_VERSION: 2
 
 ---
 
@@ -130,7 +136,7 @@ Continuando a analogia do ambiente, esse post vai tratar justamente dos padrões
 Voltando a analogia do ambiente, vejo o design pattern como regras de como os objetos devem se comportar em um determinado ambiente, regras de como fazer objetos num molde que define exatamente onde vai estar, organizadinho sem nenhuma bagunça, como se fosse um quarto arrumado e tudo no seu devido lugar, 
 
 
-![](https://notion-hugo.pages.dev/api?block_id=363b8e18-e88b-80f1-8a05-f0ca78b585bf)
+![](/notion/363b8e18-e88b-80f1-8a05-f0ca78b585bf.png)
 
 
 Essa imagem representa um local organizado com seus devidos padrões de design, seria esses padrões desse ambiente da imagem é um dos paralelos que podemos fazer pra entender melhor a ideia.
@@ -142,7 +148,7 @@ Essa imagem representa um local organizado com seus devidos padrões de design, 
 Bom, como podemos ver na imagem há vários objetos dispersos de forma diferente no ambiente, uns organizados de um jeito seguindo um padrão outros seguindo outro padrão. Agora vamos ver que na programação também existe padrões para determinados tipos de objetos, onde já existe categorias de problemas recorrentes na comunidade, então foi se pensado alguns padrões de design de código visando solucionar esses problemas. Assim os próximos tópicos vão abordar justamente os 3 tipos de patterns que o “GoF” traz.
 
 
-![](https://notion-hugo.pages.dev/api?block_id=365b8e18-e88b-8053-87d0-f4cfb0e52f7a)
+![](/notion/365b8e18-e88b-8053-87d0-f4cfb0e52f7a.png)
 
 
 ### Creational Patterns
